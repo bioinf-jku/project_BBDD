@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="405"
+   height="140"
+   id="svg2">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3883">
+      <stop
+         id="stop3885"
+         style="stop-color:#17ff00;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3887"
+         style="stop-color:#0900ff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3875">
+      <stop
+         id="stop3877"
+         style="stop-color:#095a00;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3879"
+         style="stop-color:#131663;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="215.21429"
+       y1="190.57646"
+       x2="395.5"
+       y2="190.57646"
+       id="linearGradient3881"
+       xlink:href="#linearGradient3875"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="215.21429"
+       y1="190.57646"
+       x2="395.5"
+       y2="190.57646"
+       id="linearGradient3889"
+       xlink:href="#linearGradient3883"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="215.21429"
+       y1="190.57646"
+       x2="395.5"
+       y2="190.57646"
+       id="linearGradient3897"
+       xlink:href="#linearGradient3875"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="238.88895"
+       y1="200.04131"
+       x2="545.82648"
+       y2="200.04131"
+       id="linearGradient3905"
+       xlink:href="#linearGradient3875"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-39.428571,126.14286)" />
+    <linearGradient
+       x1="238.88895"
+       y1="200.04131"
+       x2="545.82648"
+       y2="200.04131"
+       id="linearGradient3913"
+       xlink:href="#linearGradient3883"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-39.428571,126.14286)" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-145.125,-224.96876)"
+     id="layer1">
+    <path
+       d="m 395.00001,190.57646 a 89.64286,35.357143 0 1 1 -179.28572,0 89.64286,35.357143 0 1 1 179.28572,0 z"
+       transform="matrix(2.2141373,0,0,3.4116007,-328.03119,-302.0229)"
+       id="path3047"
+       style="fill:url(#linearGradient3889);fill-opacity:1;stroke:url(#linearGradient3881);stroke-opacity:1" />
+    <path
+       d="m 395.00001,190.57646 a 89.64286,35.357143 0 1 1 -179.28572,0 89.64286,35.357143 0 1 1 179.28572,0 z"
+       transform="matrix(2.2098228,0,0,2.5147314,-327.26213,-125.38643)"
+       id="path3047-8"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient3897);stroke-opacity:1" />
+    <rect
+       width="474.28571"
+       height="140.71428"
+       x="106.19905"
+       y="349.90515"
+       id="rect3847"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-opacity:1" />
+    <text
+       x="197.71428"
+       y="337.21933"
+       id="text3859"
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient3913);fill-opacity:1;stroke:url(#linearGradient3905);stroke-opacity:1;font-family:Sans"><tspan
+         x="197.71428"
+         y="337.21933"
+         id="tspan3861"
+         style="fill:url(#linearGradient3913);fill-opacity:1;stroke:url(#linearGradient3905)">ChemBioBridge</tspan></text>
+  </g>
+</svg>
