@@ -26,14 +26,6 @@ output:
     toc_depth: 2
 ...
 
-
-
-# TODO (general)
-
-* Github project page will be in the future located under https://github.com/JKU-Bioinformatics
-* Create https://zenodo.org DOI as project is released  
-* Did we not have a performance plot comparing gradient descent vs conjugate gradient descent that could be added to the LR chapter?
-
 # Contributors
 [ChemBioBridge](http://chembiobridge.eu) was investigating the rationalization of experimental and in-silico signatures via 
 supervised learning [@umk+14; @mkuh15] and data fusion [@ytm11; @saz+15; @asz+15].
