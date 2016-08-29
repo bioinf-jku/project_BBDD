@@ -1,3 +1,7 @@
+# Cite us
+
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.61084.svg)](http://dx.doi.org/10.5281/zenodo.61084)
+
 # Contributors
 [ChemBioBridge](http://chembiobridge.eu) was investigating the rationalization of experimental and in-silico signatures via 
 supervised learning [@umk+14; @mkuh15] and data fusion [@ytm11; @saz+15; @asz+15].
