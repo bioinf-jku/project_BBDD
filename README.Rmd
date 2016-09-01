@@ -1,6 +1,14 @@
 ---
 title: "Biosignature data fusion"
+author:
+- Editor(readme) - Guenter Klambauer, University of Linz
+- Editor(readme) - Joerg Kurt Wegner, Janssen Pharmaceutica
+- Editor(readme) - Marvin Steijaert, Open Analytics NV
+- Editor(readme) - Andrei Gedich, Arcadia
+date: '`r Sys.Date()`'
 output:
+  md_document:
+    variant: markdown_github
   html_document:
     css: README.css
     highlight: pygments
