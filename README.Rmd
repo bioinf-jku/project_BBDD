@@ -1,3 +1,54 @@
+---
+title: "Biosignature data fusion"
+output:
+  html_document:
+    css: README.css
+    highlight: pygments
+    number_sections: yes
+    pandoc_args:
+    - --csl
+    - README.csl
+    theme: united
+    toc: yes
+    toc_depth: 2
+  pdf_document:
+    dev: cairo_pdf
+    fig_height: 5
+    fig_width: 7
+    keep_tex: yes
+    number_sections: yes
+    pandoc_args:
+    - --csl
+    - README.csl
+    toc: yes
+    toc_depth: 2
+  word_document:
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 5
+    pandoc_args:
+    - --csl
+    - README.csl
+tags:
+- chemogenomics
+- chemophenomics
+- chemoproteomics
+- signature
+- bioinformatics
+- cheminformatics
+- machine learning
+- big data analytics
+- data science
+- supervised learning
+- computer aided drug design
+- cadd
+bibliography: README.bib
+...
+
+# Cite us
+
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.61084.svg)](http://dx.doi.org/10.5281/zenodo.61084)
+
 # Contributors
 [ChemBioBridge](http://chembiobridge.eu) was investigating the rationalization of experimental and in-silico signatures via 
 supervised learning [@umk+14; @mkuh15] and data fusion [@ytm11; @saz+15; @asz+15].
@@ -3422,6 +3473,7 @@ and higher-level information, which is known as data fusion.*" [@ytm11]
 **Pseudo multi-task**
     
 * [PIDGIN](https://github.com/lhm30/PIDGIN) [@mad+15]  
+* [BioSEA](https://github.com/accsc/BIOSEA) [@cclr+2016]
 
 **Single-task**
 
