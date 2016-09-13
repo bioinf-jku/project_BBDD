@@ -848,15 +848,21 @@ It uses an additional cascade of supervised feature selections as default for re
 <div id="trained-models" class="section level3">
 <h3><span class="header-section-number">6.4.2</span> Trained models</h3>
 <p>Logistic regression and SVM use different executables for the train and predict step. This has the advantage that the (slow) train step only is performed once and the (faster) prediction step can re-use the resulting trained model for each new set of query compounds. Trained models are stored in a directory.</p>
-<p>For logistic regressiona, this directory contains the following files:</p>
+<p>For logistic regression, <code>biosigLogisticTrain</code> creates a directory (which is read by <code>biosigLogisticPredict</code>), containing the following files:</p>
 <ul>
-<li>settings.json a file with model parameters specified for the train step</li>
-<li>for each target: <target_name>.LRModel.FilteredFeatures , which contains a list of features (uint32_t)</li>
+<li>settings.json a file with model parameters that were specified for the train step</li>
+<li>for each target: <target_name>.LRModel.FilteredFeatures, which contains a list of features (uint32_t) that are kept after all feature selection steps.</li>
 <li>for each target: <target_name>.LRModel, which contains the bias value (double) that is followed by the list of feature weights (double). The number of feature weights in LRModel should equal the number of features in LRModel.FilteredFeatures.</li>
 </ul>
+<p>For SVM, <code>biosigSvmTrain</code> creates a directory (which is read by <code>biosigSvmPredict</code>), containing the following files:</p>
+<ul>
+<li>settings.json a file with model parameters that were specified for the train step</li>
+<li>for each target: <target_name>.SVMModel.CompoundIds</li>
+<li>for each target: <target_name>.SVMModel</li>
+</ul>
 </div>
-<div id="predictions-query" class="section level3">
-<h3><span class="header-section-number">6.4.3</span> Predictions query</h3>
+<div id="prediction-query-files" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Prediction query files</h3>
 <p>The prediction query (requested compounds for prediction) is specified by a single text file or a directory of text files. Each of those files has an extension <code>.pred</code> (or <code>.pred.gz</code>). In the case of a directory with multiple files, the name should match the name of the target (<code>EGFR.pred</code>) or target-level (<code>EGFR_level5.pred</code>). It should contain one with compound identifiers (inchikeys). As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section). All these formats (text, Redis or hdf5 format) can be created using the various prediction executables or the <code>biosigPredictionFusion</code> utility.</p>
 </div>
 <div id="predictions-output" class="section level3">

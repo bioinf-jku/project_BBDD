@@ -822,13 +822,20 @@ As alternatives for the text files, also Redis and HDF5 files formats are availa
 Logistic regression and SVM use different executables for the train and predict step. This has the advantage that the (slow) train step only is performed once and the (faster) prediction step can re-use the resulting trained model for each new set of query compounds. 
 Trained models are stored in a directory.
 
-For logistic regressiona, this directory contains the following files:
+For logistic regression, `biosigLogisticTrain` creates a directory (which is read by `biosigLogisticPredict`), containing the following files:
 
-* settings.json a file with model parameters specified for the train step
-* for each target: <target_name>.LRModel.FilteredFeatures , which contains a list of features (uint32_t)
+* settings.json a file with model parameters that were specified for the train step
+* for each target: <target_name>.LRModel.FilteredFeatures, which contains a list of features (uint32_t) that are kept after all feature selection steps.
 * for each target: <target_name>.LRModel, which contains the bias value (double) that is followed by the list of feature weights (double). The number of feature weights in LRModel should equal the number of features in LRModel.FilteredFeatures.
 
-### Predictions query
+For SVM, `biosigSvmTrain` creates a directory (which is read by `biosigSvmPredict`), containing the following files:
+
+* settings.json a file with model parameters that were specified for the train step
+* for each target: <target_name>.SVMModel.CompoundIds
+* for each target: <target_name>.SVMModel
+
+
+### Prediction query files
 
 The prediction query (requested compounds for prediction) is specified by a single text file or a directory of text files. Each of those files has an extension `.pred` (or `.pred.gz`). In the case of a directory with multiple files, the name should match the name of the target (`EGFR.pred`) or target-level (`EGFR_level5.pred`).
 It should contain one with compound identifiers (inchikeys).
