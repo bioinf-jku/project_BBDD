@@ -6,11 +6,11 @@ Cite us
 Contributors
 ============
 
-[ChemBioBridge](http://chembiobridge.eu) was investigating the rationalization of experimental and in-silico signatures via supervised learning (Unterthiner et al. 2014; Mayr et al. 2015) and data fusion (Yu, Tranchevent, and Moreau 2011; Simm et al. 2015; Arany et al. 2015).
+[ChemBioBridge](http://chembiobridge.eu) and [ChemBioBridge@Github](https://github.com/bioinf-jku/project_BBDD) (IWT 135122) was investigating the rationalization of experimental and in-silico signatures via supervised learning (Unterthiner et al. 2014; Mayr et al. 2015) and data fusion (Yu, Tranchevent, and Moreau 2011; Simm et al. 2015; Arany et al. 2015).
 
 [![ChemBioBridge](images/chembiobridge.png)](http://chembiobridge.eu)
 
-[Exascience](https://github.com/ExaScience) was investigating the algorithm scalability and processing via high-performance computing (Harnie et al. 2015).
+[Exascience](https://github.com/ExaScience) (IWT 130406) was investigating the algorithm scalability and processing via high-performance computing (Harnie et al. 2015).
 
 [![Exascience](images/exascience.png)](https://github.com/ExaScience)
 
@@ -19,7 +19,7 @@ Contributors
 -   **IDEAconsult**: [Nina Jeliazkova](https://github.com/vedina)
 -   **Intel**: [Sergei Osokin](https://github.com/sosokin)
 -   **Janssen Pharmaceutica**: [Joerg Kurt Wegner](https://github.com/joergkurtwegner), Hugo Ceulemans, [Vladimir Chupakhin](https://github.com/chupvl), Emmanuel Gustin, Steffen Jaensch, An De Bondt, Jean-Marc Neefs, Hinrich Goehlmann, Jose Felipe Golib Dzib, Hans De Wolf, Pieter Peeters
--   **Openanalytics**: [Marvin Steijaert](https://github.com/msteijaert), [Arunkumar Srinivasan](https://github.com/arunsrinivasan), Laure Cougnaud, Kirsten Vanhoorde
+-   **Open Analytics NV**: [Marvin Steijaert](https://github.com/msteijaert), [Arunkumar Srinivasan](https://github.com/arunsrinivasan), Laure Cougnaud, Kirsten Vanhoorde
 -   **University of Brussels**: Dries Harnie
 -   **University of Leuven (ESAT)**: [Prof. Yves Moreau](ttp://homes.esat.kuleuven.be/~bioiuser/person.php?persid=77), Adam Arany, [Jaak Simm](https://github.com/jaak-s)
 -   **University of Leuven (IMEC)**: [Prof. Roel Wuyts](http://people.cs.kuleuven.be/~roel.wuyts/)
@@ -55,16 +55,16 @@ Introduction
 
 Note: Readers preferring a PDF or MS Word version of this README can download the document files from the shared data location [here](https://goo.gl/8FEs2X).
 
-The key goals of this research were to improve the data-driven decision making for drug design and making it more tractable and cost efficient, including liability and safety aspects. Drug design has certainly a need to improve the risk estimations for the *high-dimensional* biological (Arrowsmith and Miller 2013), *high-dimensional* chemical (Arrowsmith et al. 2015), and combined *high-dimensional × high-dimensional* (Wawer et al. 2014) spaces. For being able to call it *rational drug design*, it needs to be data-driven and systematic, ensuring a constant data growth and learning. Here it was decided to
+The key goals of this research were to improve the data-driven decision making for drug design and making it more tractable and cost efficient, including liability and safety aspects. Drug design has certainly a need to improve the risk estimations for the *high-dimensional* biological (Arrowsmith and Miller 2013), *high-dimensional* chemical (Arrowsmith et al. 2015), and combined *high-dimensional \(\times\) high-dimensional* (Wawer et al. 2014) spaces. For being able to call it *rational drug design*, it needs to be data-driven and systematic, ensuring a constant data growth and learning. Here it was decided to
 
 1.  create experimental and in-silico signatures, high-dimensional information for (chemical) probes, e.g. -omics profiles, in-silico chemical physicochemical or substructure profiles, and high-content imaging profiles
 2.  apply target (Unterthiner et al. 2014), liability prediction (Mayr et al. 2015) impacting drug saftey windows, as well as data fusion (Yu, Tranchevent, and Moreau 2011; Simm et al. 2015; Arany et al. 2015) of multiple signatures for enabling to rationalize signatures
 3.  benchmark and quantify the value of signatures in enriching decisions on gene, protein, assay, and liability/toxicity niveau. And to enable error models for allowing to estimate decision making risks.
 4.  scale all methods ensuring big-data analytics capabilities for exponentially growing signature data sets (Harnie et al. 2015)
 
-[Supervised learning](https://en.wikipedia.org/wiki/Supervised_learning) is the method of choice to learn and quantify the relation between an input signature matrix *X* (can be sparse or dense) and an observation matrix *Y* (typically sparse). Each row of *X* represents a single chemical compounds by numeric features. Features can be grouped into different types called "signatures". Compound signatures can be any in-silico or experimental features characterizing a chemical compound, e.g. chemical fingerprints, physicochemical properties, transcriptomics data, high-content imaging data, etc.
+[Supervised learning](https://en.wikipedia.org/wiki/Supervised_learning) is the method of choice to learn and quantify the relation between an input signature matrix \(X\) (can be sparse or dense) and an observation matrix \(Y\) (typically sparse). Each row of \(X\) represents a single chemical compounds by numeric features. Features can be grouped into different types called "signatures". Compound signatures can be any in-silico or experimental features characterizing a chemical compound, e.g. chemical fingerprints, physicochemical properties, transcriptomics data, high-content imaging data, etc.
 
-Observation features (columns) in *Y* reflect here often dose-response activities in form of IC50's for different genes, proteins, or assays. A value *y*<sub>*i**j*</sub> represents the activity of compound $\\mathbf x\_i$ on a certain gene, protein or assay *j*. The definition of activity is not restricted to compound-protein binding, but can be understood in a broader sense: "Activity" could be also include toxic effects of compounds, e.g. via the [NIH-Tox21](https://ncats.nih.gov/news/releases/2015/tox21-challenge-2014-winners), or any other biological activity associated with chemical compounds.
+Observation features (columns) in \(Y\) reflect here often dose-response activities in form of IC50's for different genes, proteins, or assays. A value \(y_{ij}\) represents the activity of compound \(\mathbf x_i\) on a certain gene, protein or assay \(j\). The definition of activity is not restricted to compound-protein binding, but can be understood in a broader sense: "Activity" could be also include toxic effects of compounds, e.g. via the [NIH-Tox21](https://ncats.nih.gov/news/releases/2015/tox21-challenge-2014-winners), or any other biological activity associated with chemical compounds.
 
 ![One goal is relating signatures to target profiles](images/signatures_target_relation.png "One goal is relating signatures to target profiles")
 
@@ -72,23 +72,23 @@ It is important to note that advantages in *-omics* and *phenomics* have enabled
 
 ![Known signatures with public data](images/signatures.png "Known signatures with public data")
 
-The creation of signatures enables filling gaps in expert spaces that might be too costly to fill, like toxicity and target activity spaces. The following flow indicates how a combination of signatures with machine learning enriches rational decision making and complementing missing information. By using signatures *X* we can now predict and create a dense $\\hat{Y}$.
+The creation of signatures enables filling gaps in expert spaces that might be too costly to fill, like toxicity and target activity spaces. The following flow indicates how a combination of signatures with machine learning enriches rational decision making and complementing missing information. By using signatures \(X\) we can now predict and create a dense \(\hat{Y}\).
 
 ![Biosignature design rational](images/biosignature_based_drug_design_bbdd_rational.png "Biosignature design rational")
 
-The newly available $\\hat{Y}$ enables a **Biosignature Based Drug Design (BBDD)** paradigm, which falls under a general [Drug Design](https://en.wikipedia.org/wiki/Drug_design) paradigm, specifically Computer-Aided Drug Design (CADD). Since multiple signatures *X* are derived from high-dimensional biology experiments (like phenomics or transcriptomics), they enable additional design paradigms that are not accessible via classical CADD design paradigms like *Ligand Based Drug Design (LBDD)* or *Structure Based Drug Design (SBDD)*.
+The newly available \(\hat{Y}\) enables a **Biosignature Based Drug Design (BBDD)** paradigm, which falls under a general [Drug Design](https://en.wikipedia.org/wiki/Drug_design) paradigm, specifically Computer-Aided Drug Design (CADD). Since multiple signatures \(X\) are derived from high-dimensional biology experiments (like phenomics or transcriptomics), they enable additional design paradigms that are not accessible via classical CADD design paradigms like *Ligand Based Drug Design (LBDD)* or *Structure Based Drug Design (SBDD)*.
 
 ![Biosignature Based Drug Design (BBDD)](images/biosignature_based_drug_design_bbdd.png "Biosignature Based Drug Design (BBDD)")
 
-From here on we will focus on the supervised learning and data fusion concepts that were used for learning $\\hat{Y}$, how informative signature *X*<sub>*i*</sub> is, and to which $\\hat{Y}\_i|X\_i$ they contribute to. This will also tell us which *X*<sub>*i*</sub> we should use or create if we are interested in a rational design of *Y*<sub>*i*</sub> in relation to the other *Y*<sub>*j* ≠ *i*</sub>:
+From here on we will focus on the supervised learning and data fusion concepts that were used for learning \(\hat{Y}\), how informative signature \(X_i\) is, and to which \(\hat{Y}_i|X_i\) they contribute to. This will also tell us which \(X_i\) we should use or create if we are interested in a rational design of \(Y_i\) in relation to the other \(Y_{j\neq i}\):
 
--   **Single task or pseudo-multi-task**: In a typical machine learning task the relation of a single column vector $\\mathbf y\_j$ of the activity matrix *Y* with the activity values of multiple chemical compounds $\\mathbf x\_i, \\ldots, \\mathbf x\_N$ has to be learned. In order learn the relations between the compounds *X* with all column vectors *Y*, for each column a single machine learning model is learned. There is no leveraging between single targets $\\mathbf y\_i$, even if full matrix *Y* is provided, since machine learning models are trained one-by-one without influencing other tasks. Strictly speaking is this executing a Single-task learning multiple times (one per target), though overall algorithms are optimized to predict full *Y* matrices, also in terms of cross-validation, data handling, etc. It is important to note that we can still apply a true multi-task learning with pseudo multi-task methods as elaborated by (Wicker 2013) by applying a matrix decomposition on *Y* before the learning step. Then we would rather learn the latents in *Y*′ and use the second matrix for reconstructing the original *Y*. Published examples for pseudo multi-task learning are
+-   **Single task or pseudo-multi-task**: In a typical machine learning task the relation of a single column vector \(\mathbf y_j\) of the activity matrix \(Y\) with the activity values of multiple chemical compounds \(\mathbf x_i, \ldots, \mathbf x_N\) has to be learned. In order learn the relations between the compounds \(X\) with all column vectors \(Y\), for each column a single machine learning model is learned. There is no leveraging between single targets \(\mathbf y_i\), even if full matrix \(Y\) is provided, since machine learning models are trained one-by-one without influencing other tasks. Strictly speaking is this executing a Single-task learning multiple times (one per target), though overall algorithms are optimized to predict full \(Y\) matrices, also in terms of cross-validation, data handling, etc. It is important to note that we can still apply a true multi-task learning with pseudo multi-task methods as elaborated by (Wicker 2013) by applying a matrix decomposition on \(Y\) before the learning step. Then we would rather learn the latents in \(Y'\) and use the second matrix for reconstructing the original \(Y\). Published examples for pseudo multi-task learning are
     -   Bayesian [PIDGIN](https://github.com/lhm30/PIDGIN) (Mervin et al. 2015)
     -   TODO: our own benchmark publication...TBD
--   **Proteochemometrics multi-task (PCM)**: In PCM relations between *y*<sub>*i*</sub> are often modelled by using additional target-target relations like protein sequence information (G. J. P. van Westen et al. 2013; G. J. van Westen et al. 2013; Gerard Jp van Westen et al. 2013). This often leads to a limitation that PCM can only be used for targets of the same enzyme class, since the protein information must be restricted to small molecule binding domains (also being called *active sites* or *drug pockets*).
--   **True multi-task**: A method that learns all relations between compounds *X* and their activites *Y* simultaneously taking correlation structure of *Y* into account. This can lead to an improvement of the overall predictive performance for all targets. Published examples for true multi-task learning are
+-   **Proteochemometrics multi-task (PCM)**: In PCM relations between \(y_i\) are often modelled by using additional target-target relations like protein sequence information (G. J. P. van Westen et al. 2013; G. J. van Westen et al. 2013; Gerard Jp van Westen et al. 2013). This often leads to a limitation that PCM can only be used for targets of the same enzyme class, since the protein information must be restricted to small molecule binding domains (also being called *active sites* or *drug pockets*).
+-   **True multi-task**: A method that learns all relations between compounds \(X\) and their activites \(Y\) simultaneously taking correlation structure of \(Y\) into account. This can lead to an improvement of the overall predictive performance for all targets. Published examples for true multi-task learning are
     -   via [deep learning](https://github.com/untom/binet) (Mayr et al. 2015; Unterthiner et al. 2014; Ramsundar et al. 2015)
-    -   via *Y* matrix factorization like [Bayesian Probabilistic Matrix Factorization (BPMF)](https://github.com/ExaScience/bpmf) (Salakhutdinov and Mnih 2008), Binary Matrix Factorization for toxicity prediction (Wicker 2013), or [Macau](https://github.com/jaak-s/BayesianDataFusion.jl) (Simm et al. 2015; Arany et al. 2015)
+    -   via \(Y\) matrix factorization like [Bayesian Probabilistic Matrix Factorization (BPMF)](https://github.com/ExaScience/bpmf) (Salakhutdinov and Mnih 2008), Binary Matrix Factorization for toxicity prediction (Wicker 2013), or [Macau](https://github.com/jaak-s/BayesianDataFusion.jl) (Simm et al. 2015; Arany et al. 2015)
 
 Installation
 ============
@@ -132,7 +132,7 @@ cmake -LH -G "Unix Makefiles" \
 sudo make install 2>&1 | tee make_release_sparse_$HOSTNAME\.log
 ```
 
-### *Y* data creation
+### \(Y\) data creation
 
 The easiest way to create some test data is using the [ChEMBL20-Docker](http://chembl.blogspot.be/2015/07/mychembl-docker.html) from the EMBL-EBI.
 
@@ -156,7 +156,7 @@ echo type the following password if asked: chemblvm
 ssh -p 2222 chembl@localhost
 ```
 
-### *X* data creation
+### \(X\) data creation
 
 #### In-silico sparse fingerprint signature (2D)
 
@@ -357,9 +357,9 @@ Note: If you are using the algorithms within a [VirtualBox](https://www.virtualb
 Data creation
 -------------
 
-### *Y* data creation
+### \(Y\) data creation
 
-We suggest to use for this tutorial the *compound-target-activity* data from the public [ChEMBL](https://www.ebi.ac.uk/chembl/). The details of the *Y* data creation based on ChEMBL20, including all scripts, are explained in the advanced [data normalization](#data-normalization) section.
+We suggest to use for this tutorial the *compound-target-activity* data from the public [ChEMBL](https://www.ebi.ac.uk/chembl/). The details of the \(Y\) data creation based on ChEMBL20, including all scripts, are explained in the advanced [data normalization](#data-normalization) section.
 
 For simplicity at this point we suggest downloading the normalized data files [here](https://goo.gl/8FEs2X) and then placing them in your *$BIOSIG\_DIR*.
 
@@ -374,7 +374,7 @@ For simplicity at this point we suggest downloading the normalized data files [h
 | CGBRMMMHBXSYHH-LILDFLRNNA-N | GABRB3   | 6.56          | ... |
 | ...                         | ...      | ...           | ... |
 
-The default approach is to aggregate *Y* activity data on a *gene* level as well as restricting it to the organisms: human, mouse, and rat. This aggregated data will then be used for judging the information content of signatures. The lower the aggregation level, the more *Y* columns will be investigated, while we might lose overall cross-correlation across those columns, since the overall data existing on compound-assay-activity triplets is typically very sparse (1-2% filled in an overall matrix). Both has pros and cons and will depend on how we want to measure a signature information value, and the information value of a followed *signature data fusion*. The possible aggregation levels are:
+The default approach is to aggregate \(Y\) activity data on a *gene* level as well as restricting it to the organisms: human, mouse, and rat. This aggregated data will then be used for judging the information content of signatures. The lower the aggregation level, the more \(Y\) columns will be investigated, while we might lose overall cross-correlation across those columns, since the overall data existing on compound-assay-activity triplets is typically very sparse (1-2% filled in an overall matrix). Both has pros and cons and will depend on how we want to measure a signature information value, and the information value of a followed *signature data fusion*. The possible aggregation levels are:
 
 -   **L2** (ChEMBL target tree) - contains multiple L3: Kinase, Ligand-gated ion channel, Protease, ...
 -   **L3** (ChEMBL target tree) - contains multiple L4: 5HT3 receptor, IP3 receptor, Protein kinase, ...
@@ -383,13 +383,13 @@ The default approach is to aggregate *Y* activity data on a *gene* level as well
 -   **protein** - contains multiple assays: P62258, P62259, P62260, ...
 -   **assay**: chembl:assay\_id:83907, chembl:assay\_id:39014, ...
 
-### Internal - Create and export *X* data
+### Internal - Create and export \(X\) data
 
 #### In-silico sparse fingerprint signature (2D)
 
 ##### biosigCreateFingerprints via JCompoundMapper service
 
-The already integrated *X* data creation uses a service wrapper for JCompoundMapper (Hinselmann et al. 2011).
+The already integrated \(X\) data creation uses a service wrapper for JCompoundMapper (Hinselmann et al. 2011).
 
 It calculates a fingerprint dataset based on a SDFile. Ideally, provided files are normalized, with inchikey as title or SD property entry. For simplicity of this readme using only one data source we use the normalization of ChEMBL as provided. For users that want to mix data sets we refer to the advanced [data normalization](#data-normalization) section.
 
@@ -438,7 +438,7 @@ biosigSignatureConverter \
 
 The *biosigSignatureConverter* provides advanced options to apply also feature selection algorithms per single-target or multiple-targets, that also would allow re-creating signature datafiles with optimized and filtered feature sets. This becomes especially useful with growing data sizes and training/predicting millions of compounds across thousands of genes.
 
-### External - Load *X* data
+### External - Load \(X\) data
 
 #### Loading sparse bitset data
 
@@ -503,7 +503,7 @@ biosigSignatureConverter --sourceSignatureName chembl_moe_physchem_txt \
 
 For your convenience the resulting files can be downloaded [here](https://goo.gl/8FEs2X).
 
-### Load *Y* data
+### Load \(Y\) data
 
 #### Target generator - simple training
 
@@ -536,8 +536,8 @@ This will write multiple files under *activities\_chembl20\_for\_jcmecfp\_signat
     -   9 - 1 nM
     -   8 - 10 nM
     -   7 - 100 nM
-    -   6 - 1 *μ*M
-    -   5 - 10 *μ*M
+    -   6 - 1 \(\mu\)M
+    -   5 - 10 \(\mu\)M
 
 Here the example for P34975\_level7.train:
 
@@ -637,7 +637,7 @@ For clarification, the algorithms might vary in various ways from existing publi
 -   **LogOddsScore**: the method in (Koutsoukas et al. 2013; Mussa, Mitchell, and Glen 2013; Mussa et al. 2015) is a LogOdds predictor (not a Naive Bayes predictor). Here we use a cascade of additional supervised feature selections as default
     for reducing irrelevant features. For more details see chapter [LogOdds-Score](#logodds-score).
 -   **Naive Bayes**: is a Naive Bayes predictor. For more details see chapter [Naive-Bayes](#naive-bayes).
--   **Kernel-Density, Parzen-Rosenblatt-Windows (PRW)**: [Kernel density, PRW](https://en.wikipedia.org/wiki/Kernel_density_estimation) in (Lowe, Glen, and Mitchell 2010; Koutsoukas et al. 2013) uses *A*ctive *Y* data only. As discussed by the Google team evaluating the DUD virtual screening benchmark (Ramsundar et al. 2015) does data using *A* only (and some decoys, not real inactives) render their statistical analysis uninformative. In our analysis we often observed that using *A* alone, rather produces *false positive* (FP) predictors, since such predictors overestimate potential actives (as false positive hits). This is not surprising, since they do simply not know what inactives *I* look like. Our implementation uses *A*ctives and *I*nactives preventing such issues. It uses an unsupervised feature selection as default (can be changed) for reducing irrelevant features. For more details see chapter [Kernel Density Estimation or Parzen-Rosenblatt-Window](#kernel-density-estimation-or-parzen-rosenblatt-window).
+-   **Kernel-Density, Parzen-Rosenblatt-Windows (PRW)**: [Kernel density, PRW](https://en.wikipedia.org/wiki/Kernel_density_estimation) in (Lowe, Glen, and Mitchell 2010; Koutsoukas et al. 2013) uses \(A\)ctive \(Y\) data only. As discussed by the Google team evaluating the DUD virtual screening benchmark (Ramsundar et al. 2015) does data using \(A\) only (and some decoys, not real inactives) render their statistical analysis uninformative. In our analysis we often observed that using \(A\) alone, rather produces *false positive* (FP) predictors, since such predictors overestimate potential actives (as false positive hits). This is not surprising, since they do simply not know what inactives \(I\) look like. Our implementation uses \(A\)ctives and \(I\)nactives preventing such issues. It uses an unsupervised feature selection as default (can be changed) for reducing irrelevant features. For more details see chapter [Kernel Density Estimation or Parzen-Rosenblatt-Window](#kernel-density-estimation-or-parzen-rosenblatt-window).
     It uses an additional cascade of supervised feature selections as default for reducing irrelevant features. There are two important aspects about PRW:
     -   it is [transductive](https://en.wikipedia.org/wiki/Transduction_(machine_learning)), could therefore allow predictions that are not achievable by any inductive model. On the other hand will we always need to predict using all training data (quality vs speed tradeoff).
     -   it allows using any form of kernel object comparions itself, like other [molecule kernels](#r-similarity-functions-including-molecule-kernels) or data fusion kernels (Yu, Tranchevent, and Moreau 2011)
@@ -651,19 +651,46 @@ For clarification, the algorithms might vary in various ways from existing publi
 ![Obtain refined and higher-level insights via data fusion](images/signatures_target_relation_predicted.png "Obtain refined and higher-level insights via data fusion")
 
 -   **nomenclature**
-    -   $\\tilde y\_{i,j}$: fusion prediction for compound *i* on target *j*
-    -   $\\hat y\_{i,j,m}$: prediction score or probability for compound *i* on target *j* by method *m*
-    -   *M*: number of prediction methods
+    -   \(\tilde y_{i,j}\): fusion prediction for compound \(i\) on target \(j\)
+    -   \(\hat y_{i,j,m}\): prediction score or probability for compound \(i\) on target \(j\) by method \(m\)
+    -   \(M\): number of prediction methods
 -   **normalization type**
-    -   **z-score** (Sastry, Inakollu, and Sherman 2013): Input can be probabilities or scores. Produces scores. Uses all training data as reference set calculating $\\tilde y\_{c,t}=\\frac{1}{M}\\sum\_{m=1}^{M}\\frac{\\hat y\_{i,j,m}-\\overline{\\hat y\_{i,j,.}}}{\\rm{sd}(\\hat y\_{i,j,.})}$ for novel predictions.
+    -   **z-score** (Sastry, Inakollu, and Sherman 2013): Input can be probabilities or scores. Produces scores. Uses all training data as reference set calculating \(\tilde y_{c,t}=\frac{1}{M}\sum_{m=1}^{M}\frac{\hat y_{i,j,m}-\overline{\hat y_{i,j,.}}}{\rm{sd}(\hat y_{i,j,.})}\) for novel predictions.
     -   **Platt scaling** (Platt 1999): Input can be probabilities or scores. Produces probabilities. A proper benchmarking, parameter derivation, and hypothesis testing is critical for preventing a data fusion overfitting. The parameter derivation should NOT be done on the training data, but a nested inner and outer cross-validation. Those parameters can then be used for normalizing all training data and outcomes. A [platt scaling](scripts\R\R_packages\PlattScaling) R-package has been created by the University of Linz that was used in all our work to validate and derive the proper Platt parameter sets, one per target, which are then used for scaling novel predictions.
 -   **fusion type**
-    -   **mean**: Input should be probabilities, scores are somewhat workable, though a non-normalization *across* target classes render a further analysis problematic. Produces probabilities if probabilities are given, otherwise scores. $\\tilde y\_{c,t}=\\frac{1}{M}\\sum\_{m=1}^{M}\\hat y\_{i,j,m}$. Does not use any reference data.
-    -   **geometric mean**: Input should be probabilities, scores are somewhat workable, though a non-normalization *across* target classes render a further analysis problematic. Produces probabilities if probabilities are given, otherwise scores. $\\tilde y\_{i,j}=\\sqrt\[M\]{\\prod\_{m=1}^{M}\\hat y\_{i,j,m}}$. Does not use any reference data.
+    -   **mean**: Input should be probabilities, scores are somewhat workable, though a non-normalization *across* target classes render a further analysis problematic. Produces probabilities if probabilities are given, otherwise scores. \(\tilde y_{c,t}=\frac{1}{M}\sum_{m=1}^{M}\hat y_{i,j,m}\). Does not use any reference data.
+    -   **geometric mean**: Input should be probabilities, scores are somewhat workable, though a non-normalization *across* target classes render a further analysis problematic. Produces probabilities if probabilities are given, otherwise scores. \(\tilde y_{i,j}=\sqrt[M]{\prod_{m=1}^{M}\hat y_{i,j,m}}\). Does not use any reference data.
     -   **maximum probability**: Input should be probabilities. This will take the probability with the highest confidence, means furthest away from 0.5 (&lt;0.5 inactive, &gt;0.5 active).
-    -   **inverse geometric mean**: Input must be probabilities. Produces probabilities. $\\tilde y\_{i,j}=1-\\sqrt\[M\]{\\prod\_{m=1}^{M}(1-\\hat y\_{i,j,m})}$. Does not use any reference data.
-    -   **noisy OR**: Input must be probabilities. Produces probabilities. $\\tilde y\_{i,j}=1-\\prod\_{m=1}^{M}(1-\\hat y\_{i,j,m})$. Does not use any reference data.
-    -   **bayes like** (University of Linz): Input $\\hat y\_{i,j,m}$ must be probabilities. Produces probabilities and uses all training data as reference set calculating $\\tilde y\_{i,j}=1-\\prod\_{m=1}^{M}\\hat y\_{i,j,m}/(\\prod\_{m=1}^{M} \\hat y\_{i,j,m}+\\prod\_{m=1}^{M}(1-\\hat y\_{i,j,m})(\\frac{g}{1-g})^{M-1})$, where *g* = *p*(*y*<sub>*i**j*</sub> = 1|*j*) is the relative frequency of active compounds.
+    -   **inverse geometric mean**: Input must be probabilities. Produces probabilities. \(\tilde y_{i,j}=1-\sqrt[M]{\prod_{m=1}^{M}(1-\hat y_{i,j,m})}\). Does not use any reference data.
+    -   **noisy OR**: Input must be probabilities. Produces probabilities. \(\tilde y_{i,j}=1-\prod_{m=1}^{M}(1-\hat y_{i,j,m})\). Does not use any reference data.
+    -   **bayes like** (University of Linz): Input \(\hat y_{i,j,m}\) must be probabilities. Produces probabilities and uses all training data as reference set calculating \(\tilde y_{i,j}=1-\prod_{m=1}^{M}\hat y_{i,j,m}/(\prod_{m=1}^{M} \hat y_{i,j,m}+\prod_{m=1}^{M}(1-\hat y_{i,j,m})(\frac{g}{1-g})^{M-1})\), where \(g=p(y_{ ij}=1 | j)\) is the relative frequency of active compounds.
+
+Signature evaluation and fusion - File and directory formats
+------------------------------------------------------------
+
+(TODO: expand further)
+
+### Train data
+
+Train data is stored in a directory with tab-separated text files with and extension `.train` (or `.train.gz`). The name of the file indicates the target (`EGFR.train`) or target-level (`EGFR_level5.train`) and contains two columns and no header. The first column contains the compound identifiers (inchikeys), the second is the activity (0=inactive, 1=active). As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section). Train data (in text, Redis or hdf5 format) can be created using the `biosigTargetsGenerator` utility.
+
+### Trained models
+
+Logistic regression and SVM use different executables for the train and predict step. This has the advantage that the (slow) train step only is performed once and the (faster) prediction step can re-use the resulting trained model for each new set of query compounds. Trained models are stored in a directory.
+
+For logistic regressiona, this directory contains the following files:
+
+-   settings.json a file with model parameters specified for the train step
+-   for each target: <target_name>.LRModel.FilteredFeatures , which contains a list of features (uint32\_t)
+-   for each target: <target_name>.LRModel, which contains the bias value (double) that is followed by the list of feature weights (double). The number of feature weights in LRModel should equal the number of features in LRModel.FilteredFeatures.
+
+### Predictions query
+
+The prediction query (requested compounds for prediction) is specified by a single text file or a directory of text files. Each of those files has an extension `.pred` (or `.pred.gz`). In the case of a directory with multiple files, the name should match the name of the target (`EGFR.pred`) or target-level (`EGFR_level5.pred`). It should contain one with compound identifiers (inchikeys). As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section). All these formats (text, Redis or hdf5 format) can be created using the various prediction executables or the `biosigPredictionFusion` utility.
+
+### Predictions output
+
+Predictions are stored in a directory with tab-separated text files with and extension `.out` (or `.out.gz`). The name of the file indicates the target (`EGFR.out`) or target-level (`EGFR_level5.out`) and contains two columns and no header. The first column contains the compound identifiers (inchikeys), the second is the predicted score or probability. As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section). All these formats (text, Redis or hdf5 format) can be created using the various prediction executables or the `biosigPredictionFusion` utility.
 
 Signature evaluation and fusion - Traditional insilico signature
 ----------------------------------------------------------------
@@ -1066,7 +1093,7 @@ Data normalization
 
 While data from a single data source is often normalized (to some degree), data normalization is a critical aspect when merging data from multiple data sources, e.g. a public data source like ChEMBL with proprietary assay information from a pharmaceutical company. The following sections highlight the most critical normalization aspects and how they can be solved.
 
-### *Y* data creation
+### \(Y\) data creation
 
 For ChEMBL alone it is still important to normalize compound identifiers as well as target identifiers for ensuring we are aggregating the data properly rather than introducing an artificial redundancy which might lead to overfitting the data or at least a clear underestimation of the variance in the [bias-variance decomposition](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff) we want to keep as low as possible. Otherwise we might risk that investiaged signatures might overestimate their performance for future use-cases, which is not helping the overall goal of fusing the best information across all signatures to lower exactly the global decision making risk.
 
@@ -1139,9 +1166,9 @@ The resulting triplet file has the following format
 | CGBRMMMHBXSYHH-LILDFLRNNA-N | GABRB3   | 6.56          | ... |
 | ...                         | ...      | ...           | ... |
 
-### Unique compounds and unique compound identifiers (impacts *X* and *Y*)
+### Unique compounds and unique compound identifiers (impacts \(X\) and \(Y\))
 
-Note: Row identifier (small molecule) normalization will impact *X* and *Y* data, and the linkage, thus might it be important to normalize the data as early as possible for facilitating further processing.
+Note: Row identifier (small molecule) normalization will impact \(X\) and \(Y\) data, and the linkage, thus might it be important to normalize the data as early as possible for facilitating further processing.
 
 This tutorial uses for most parts non-normalized chemical compounds. Specifically we only use compounds as they have been normalized by the EMBL-EBI-ChEMBL team. For all practical applications and for merging compound or activity data sets we do **strongly** recommend to normalize the compound dimension, since all downstream data is linked via the compound dimension.
 
@@ -1334,7 +1361,7 @@ do
 done
 ```
 
-### Targets - proteins and genes (impacts *Y*)
+### Targets - proteins and genes (impacts \(Y\))
 
 Ensure [BioPython](http://biopython.org/) is installed.
 
@@ -1422,7 +1449,7 @@ Note: The [EC numbers](https://en.wikipedia.org/wiki/Enzyme_Commission_number) a
 Data loading and stratification
 -------------------------------
 
-### External - Load *X* data (from Openbabel, RDKit)
+### External - Load \(X\) data (from Openbabel, RDKit)
 
 ##### Openbabel
 
@@ -1461,7 +1488,7 @@ biosigSignatureConverter --sourceSignatureName chembl_rdkit_morgan_txt --destSig
 
 For your convenience the resulting files can be downloaded [here](https://goo.gl/8FEs2X).
 
-### Load *Y* data
+### Load \(Y\) data
 
 #### Target generator - cluster cross-validation with sampling and balancing
 
@@ -1475,13 +1502,13 @@ The target generator simplifies the process by preparing a
 
 -   **[bootstrap sampling](https://en.wikipedia.org/wiki/Bootstrapping_(statistics))** as an additional element to reduce a data bias and improve the overall estimations of a variance.
 -   **filtering**
-    -   ensuring a *cluster cross-validation* (CCV) produces valid splits with sufficient actives and inactives by removing all invalid splits, which might e.g. contain no actives at all or compounds without signature data *X* due to the feature selection.
--   **cluster cross-validation (CCV)**
+    -   ensuring a *cluster cross-validation* (CCV) produces valid splits with sufficient actives and inactives by removing all invalid splits, which might e.g. contain no actives at all or compounds without signature data \(X\) due to the feature selection.
+-   **cluster cross-validation (CCV)** (Mayr et al. 2015)
     -   *cluster cross-validation* (CCV) (allows using all data, including chemical series); for preventing a chemical series bias in which e.g. compounds from the same chemical series might end up in a training and test set, which would render variance estimations useless. A brief example is provided in a cluster cross-validation [Excel file](cluster_crossvalidation.xlsx).
     -   a *naive cross-validation* is only applicable for already stratified data sets without chemical series, aka a cluster of signatures belonging to each other, like a chemical chemotype cluster
 -   **balancing**
     -   *actives* vs *inactives* balancing (compounds per target). Typical industry data contains 10-1000 times more inactive compounds than active compounds. By creating a balanced stratification we facilitate the supervised learning and compensate the smaller data set sizes by re-sampling especially from the inactives multiple times. Thus the combination of a *balancing* (setting actives vs inactives ratios) is closely related to a *bootstrap sampling* (sampling all data, here under certain actives vs inactives ratio constraints).
-    -   *multi-task* balancing across targets: for preventing an overfitting in a multi-task scenario we need to ensure not mixing compounds in train and test folds across targets, since we would overfit. On the other hand, if we do this in a *naive de novo* way, we would use the same compounds for all training folds, and another set of compounds for all test folds. While this could be done for dense *Y* matrices is this not practical for sparse *Y* we are typically observing, since we introduce highly imbalanced data splits across targets. Thus, we need to ensure the number of actives and inactives is somewhat balanced *across* multiple targets. Here the sampling applies a *multi-task floodfilling [knapsack](https://en.wikipedia.org/wiki/Knapsack_problem)* approach. This is also important for improving the variance estimations for *multi-task* machine learning.
+    -   *multi-task* balancing across targets: for preventing an overfitting in a multi-task scenario we need to ensure not mixing compounds in train and test folds across targets, since we would overfit. On the other hand, if we do this in a *naive de novo* way, we would use the same compounds for all training folds, and another set of compounds for all test folds. While this could be done for dense \(Y\) matrices is this not practical for sparse \(Y\) we are typically observing, since we introduce highly imbalanced data splits across targets. Thus, we need to ensure the number of actives and inactives is somewhat balanced *across* multiple targets. Here the sampling applies a *multi-task floodfilling [knapsack](https://en.wikipedia.org/wiki/Knapsack_problem)* approach. This is also important for improving the variance estimations for *multi-task* machine learning.
 -   **multi-task**
     -   this routine ensures valid multi-task nested-cross-validation folds
 
@@ -1504,10 +1531,10 @@ The *target generator* provides the following options:
             -   **clusterCompoundIdColumnName**: Name of compound id column in cluster data file
     -   **assignClusterIndex**: If true - Assign cluster index to compound that is not present in cluster data. If false - filter out compounds that are not present in cluster data
 -   **sampleTargets**: Enable (pseudo) target sampling
-    -   **samplingType**: Type of (pseudo) target sampling. This is the most critical parameter for ensuring balancing the data, since especially industry data has typically a huge amount of *I*nactive data points compared to the *A*ctives. Possible values:
+    -   **samplingType**: Type of (pseudo) target sampling. This is the most critical parameter for ensuring balancing the data, since especially industry data has typically a huge amount of \(I\)nactive data points compared to the \(A\)ctives. Possible values:
         -   **nRandom**: samplingNum random compounds
-        -   **keepRatio**: select samplingNum random compounds such that *A*ctive/*I*nactive ratio remains constant across all targets, even if more *A*ctives might be available.
-        -   **xTimes** (recommended): use all *A*ctives and at most *samplingXTimesNum* as much *I*nactives
+        -   **keepRatio**: select samplingNum random compounds such that \(A\)ctive/\(I\)nactive ratio remains constant across all targets, even if more \(A\)ctives might be available.
+        -   **xTimes** (recommended): use all \(A\)ctives and at most *samplingXTimesNum* as much \(I\)nactives
             -   samplingXTimesNum: Maximum ratio of inactive vs active compounds, e.g. 2 takes two times the amount of inactive compounds compared to the active compounds
         -   **nPerCluster**: samplingNum compounds per cluster
     -   **samplingSeed**: Seed that is used for sampling. Since we stratify the data for ensuring it is more balanced it is strongly recommended to run the data straficiation and evaluation multiple times with different random generator seeds. We neither want a bias due to imbalanced data, nor a bias due to a single run on a stratified balanced data set. Best is to sample and stratify multiple times.
@@ -1522,7 +1549,7 @@ The *target generator* provides the following options:
 -   **calculateStats**: Enables calculation of various folding stats instead of generating targets. Is based on target generator output
     -   **statsOutputPath**: Output path for folding stats results
 
-Example of a stratified sampled cluster cross-validation (CCV) for multi-task (multiple targets) mining. The prepared cluster-cross-validation signatures can be downloaded [here](https://goo.gl/8FEs2X).
+Example of a stratified sampled cluster cross-validation (CCV) (Mayr et al. 2015) for multi-task (multiple targets) mining. The prepared cluster-cross-validation signatures can be downloaded [here](https://goo.gl/8FEs2X).
 
 ``` bash
 MIN_CMPDS_TOTAL=100
@@ -1582,7 +1609,7 @@ For this tutorial the Janssen clustering *chembl20\_cmpds.clustered.janssen.txt.
 
 ##### Complete-linkage clustering
 
-Note: This method scales cubic with *O*(*n**C**o**m**p**o**u**n**d**s*<sup>3</sup>), is thus 'slow'. As example, on 450k ChEMBL compounds this method runs multiple days!
+Note: This method scales cubic with \(O(nCompounds^3)\), is thus 'slow'. As example, on 450k ChEMBL compounds this method runs multiple days!
 
 The smallest distance between clusters determines at which points they are combined. This method is recursively combining all compounds that are within a certain distance from each other. For more details see [Complete-linkage clustering](https://en.wikipedia.org/wiki/Complete-linkage_clustering). This clustering is also called farthest neighbour clustering.
 
@@ -1602,7 +1629,7 @@ python scripts/python/chembl_data/chembl20_cluster_compounds.py > chembl20_cmpds
 -->
 ##### Latent Dirichlet Allocation (LDA) clustering
 
-Note: This method scales linear with *O*(*n**T**o**p**i**c**s*), is thus 'fast'. As example, on 450k ChEMBL compounds this method runs a few minutes!
+Note: This method scales linear with \(O(nTopics)\), is thus 'fast'. As example, on 450k ChEMBL compounds this method runs a few minutes!
 
 One large-scale clustering method that can be used is [Latent-Dirichlet-Allocation](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation) (LDA) (Blei, Ng, and Jordan 2003). Here we use the [LDA from vowpal wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/lda.pdf).
 
@@ -1660,11 +1687,11 @@ Signature feature selection
 
 ![Feature selection for reducing signatures to the informative content.](images/signatures_feature_selection.png "Feature selection for reducing signatures to the informative content.")
 
--   **unsupervised** (uses *X* signature information, only)
+-   **unsupervised** (uses \(X\) signature information, only)
     -   **ShannonEntropy** Shannon entropy models the information content of a feature. It allows removing uninformative features, e.g. constant features.
--   **supervised** (uses *Y* target information and *X* signature information)
-    -   **MinFeatureOccurrence**: min occurrences filter threshold (positive integer). Removes features that have too little occuring bits. Only features that have a minimum number of &lt;filter value&gt; 'on' bits on ACTIVE compounds on ANY of the targets (in the trainset) are included.
-    -   **MinFeatureAbsence**: min absence filter threshold (positive integer). Removes features that have too many occuring bits. Only features that have a minimum number of &lt;filter value&gt; 'off' bits on ACTIVE compounds on ANY of the targets (in the trainset) are included.
+-   **supervised** (uses \(Y\) target information and \(X\) signature information)
+    -   **MinFeatureOccurrence**: min occurrences filter threshold (positive integer). Removes features that have too little occuring bits. Only features that have a minimum number of \(<\)filter value\(>\) 'on' bits on ACTIVE compounds on ANY of the targets (in the trainset) are included.
+    -   **MinFeatureAbsence**: min absence filter threshold (positive integer). Removes features that have too many occuring bits. Only features that have a minimum number of \(<\)filter value\(>\) 'off' bits on ACTIVE compounds on ANY of the targets (in the trainset) are included.
     -   **LogOddsScore**:
         -   weightThreshold: LogOddsScore filter threshold. Features must have greater or equal weight to be filtered
         -   useAbsentFeatureCorrection:Parameter for LogOddsScore prefilter. Specifies if absent feature correction should be used.
@@ -1681,14 +1708,14 @@ Signature feature selection
 Platt scaling for probabilistic outputs, confidence estimation and applicability domain
 ---------------------------------------------------------------------------------------
 
-Platt scaling (Platt 1999) has been proposed as a method to map predictions of Support Vector Machines to probabilistic outputs. However, Platt scaling can generally be used to map continuous values $\\mathbf{\\hat{y}}$ (predictions) for instances from two classes $\\mathbf t$ (active and inactive compounds) to probabilities. The basic idea is to use a sigmoid $\\frac{1}{1+\\exp(A\\ \\hat y\_i+B)}$ to map $\\mathbf y$ to \[0, 1\] and adjust the shape of the sigmoid to maximize the likelihood:
+Platt scaling (Platt 1999) has been proposed as a method to map predictions of Support Vector Machines to probabilistic outputs. However, Platt scaling can generally be used to map continuous values \(\mathbf{\hat{y}}\) (predictions) for instances from two classes \(\mathbf t\) (active and inactive compounds) to probabilities. The basic idea is to use a sigmoid \(\frac{1}{1+\exp(A\ \hat y_i+B)}\) to map \(\mathbf y\) to \([0,1]\) and adjust the shape of the sigmoid to maximize the likelihood:
 
-$$
- \\min \_{A,B} - \\sum \_{i=1} ^N t\_i \\log \\left(\\frac{1}{1+\\exp(A\\ \\hat y\_i+B)} \\right)
-  + (1- t\_i) \\log \\left(1-\\left(\\frac{1}{1+\\exp(A\\ \\hat y\_i+B)} \\right) \\right)
-$$
+\[
+ \min _{A,B} - \sum _{i=1} ^N t_i \log \left(\frac{1}{1+\exp(A\ \hat y_i+B)} \right)
+  + (1- t_i) \log \left(1-\left(\frac{1}{1+\exp(A\ \hat y_i+B)} \right) \right)
+\]
 
-In order to obtain unbiased probabilities, the fitting of the model parameters *A* and *B* has to be performed on an independent data set, such as an hold-out set.
+In order to obtain unbiased probabilities, the fitting of the model parameters \(A\) and \(B\) has to be performed on an independent data set, such as an hold-out set.
 
 Reading GCT data from the Broad institute
 -----------------------------------------
@@ -1790,7 +1817,7 @@ do
 done
 ```
 
-The prepared cluster cross-validation data for the Wawer signatures can be downloaded [here](https://goo.gl/8FEs2X).
+The prepared cluster cross-validation (Mayr et al. 2015) data for the Wawer signatures can be downloaded [here](https://goo.gl/8FEs2X).
 
 Advanced options
 ================
@@ -2267,9 +2294,9 @@ The usage of the different signature data input types enables the following simi
 
 -   **bitsets or numeric degenerative bitsets**
     -   sparse
-        -   jaccard distance: $f(A,B)=\\frac{|A\\cdot B|}{|A|+|B|-|A\\cap B|}$
-        -   hamming distance: *f*(*A*, *B*)=|*A*|+|*B*|−2 ⋅ |*A* ∩ *B*|
-        -   tanimoto distance: $f(A,B)=\\frac{|A\\cdot B|}{|A|^2+|B|^2-A\\cdot B}$
+        -   jaccard distance: \(f(A,B)=\frac{|A\cdot B|}{|A|+|B|-|A\cap B|}\)
+        -   hamming distance: \(f(A,B)=|A|+|B|-2\cdot |A\cap B|\)
+        -   tanimoto distance: \(f(A,B)=\frac{|A\cdot B|}{|A|^2+|B|^2-A\cdot B}\)
     -   dense (via folding of sparse, e.g. re-hashing sparse to 2048 dense bits)
         -   "jaccard\_bitset,foldingSize=2048"
         -   "hamming\_bitset,foldingSize=2048"
@@ -2361,13 +2388,13 @@ Sepp Hochreiter suggested log-odds-scores as a fast method for target prediction
 
 ### Log Odds Scoring in Bioinformatics
 
-The log-odds score *S*<sub>*i**j*</sub> for amino acid *i* and *j* is
+The log-odds score \(S_{ij}\) for amino acid \(i\) and \(j\) is
 
-$$
-S\_{ij}=\\frac{1}{\\lambda}\\log\\left(\\frac{p\_{ij}}{q\_i q\_j}\\right)
-$$
+\[
+S_{ij}=\frac{1}{\lambda}\log\left(\frac{p_{ij}}{q_i q_j}\right)
+\]
 
-Here, *p*<sub>*i**j*</sub> is the probability of two amino acids *i* and *j* replacing each other in a homologous sequence, and *q*<sub>*i*</sub> and *q*<sub>*j*</sub> are the background probabilities of finding the amino acids *i* and *j* in any protein sequence. The factor *λ* is a scaling factor, set such that the matrix contains easily computable integer values. For sequence alignment, the alignment score for sequences **x** and **y** is computed by summing up the scores per alignment position. Thus, the log-odds score of an alignment of length *L* can be considered as a likelihood-ratio:
+Here, \(p_{ij}\) is the probability of two amino acids \(i\) and \(j\) replacing each other in a homologous sequence, and \(q_i\) and \(q_j\) are the background probabilities of finding the amino acids \(i\) and \(j\) in any protein sequence. The factor \(\lambda\) is a scaling factor, set such that the matrix contains easily computable integer values. For sequence alignment, the alignment score for sequences \(\mathbf{x}\) and \(\mathbf{y}\) is computed by summing up the scores per alignment position. Thus, the log-odds score of an alignment of length \(L\) can be considered as a likelihood-ratio:
 
 \begin{eqnarray*}
  S(\mathbf{x},\mathbf{y})&=&\sum_{k=1}^{L}S_{x_k,y_k} \\
@@ -2375,109 +2402,109 @@ Here, *p*<sub>*i**j*</sub> is the probability of two amino acids *i* and *j* rep
   &=& \frac{1}{\lambda}\log\left(\frac{\prod_{k=1}^{L}p_{x_k,y_k}}{\prod_{k=1}^{L}q_{x_k} \prod_{k=1}^{L}q_{y_k}} \right) \\
   &=& \frac{1}{\lambda}\log \left(\frac{p(\mathbf{x},\mathbf{y})}{q(\mathbf{x})q(\mathbf{y})}\right).
 \end{eqnarray*}
-Note the a likelihood ratio test cannot be applied because it requires nested models: one model extends another model by adding more parameters. The likelihood *p*(**x**, **y**) is a model that assumes dependencies between **x** and **y**, while *q*(**x**)*q*(**y**) does not assume such dependencies. Thus, the likelihood ratio assesses how well an alignment can be explained with a sequence-dependence model vs. a sequence-independence model.
+Note the a likelihood ratio test cannot be applied because it requires nested models: one model extends another model by adding more parameters. The likelihood \(p(\mathbf{x},\mathbf{y})\) is a model that assumes dependencies between \(\mathbf{x}\) and \(\mathbf{y}\), while \(q(\mathbf{x})q(\mathbf{y})\) does not assume such dependencies. Thus, the likelihood ratio assesses how well an alignment can be explained with a sequence-dependence model vs. a sequence-independence model.
 
 ### Log Odds Scoring for Target Prediction
 
-The target-feature dependence model likelihood is divided by the target-feature independence model likelihood. The likelihood ratio considers for each feature the ratio of its appearance in active compounds divided the ratio of its appear- ance in all compounds. Therefore, a feature that is observed in every compound is not viewed as target indicative. On the other hand, a feature which is rare but appears often in the target is considered as target indicative. The odds of how often more a feature *j* is observed in actives of target *i* than by choosing it randomly for each compound that is active is:
+The target-feature dependence model likelihood is divided by the target-feature independence model likelihood. The likelihood ratio considers for each feature the ratio of its appearance in active compounds divided the ratio of its appear- ance in all compounds. Therefore, a feature that is observed in every compound is not viewed as target indicative. On the other hand, a feature which is rare but appears often in the target is considered as target indicative. The odds of how often more a feature \(j\) is observed in actives of target \(i\) than by choosing it randomly for each compound that is active is:
 
-$$
-\\frac{p(i,j)}{p(i)p(j)}.
-$$
+\[
+\frac{p(i,j)}{p(i)p(j)}.
+\]
 
 We reformulate this odds as a conditional probability:
 
-$$
-\\frac{p(i|j)}{p(i)}.
-$$
+\[
+\frac{p(i|j)}{p(i)}.
+\]
 
 To compute the odds, we estimate two probabilities:
 
--   *p*(*i*|*j*): the probability that a compound is active on target *i* given only compounds that contain feature *j* and
--   *p*(*i*): the probability of compound being active on target *i* given all com- pounds.
+-   \(p(i|j)\): the probability that a compound is active on target \(i\) given only compounds that contain feature \(j\) and
+-   \(p(i)\): the probability of compound being active on target \(i\) given all com- pounds.
 
 or both probabilities of being active, we assume a Bernoulli distribution. The maximum likelihood estimation for the success probability of a Bernoulli distribution is the number of successes divided by the number of trials or, equiv- alently, the mean success.
 
 We have following counts:
 
--   *N*<sub>*i**j*</sub> number of compounds that are active on target *i* and contain feature *j*.
--   *N*<sub>*i*</sub> number of compounds that are active on target *i*.
--   *N*<sub>*j*</sub> number of compounds that contain feature *j*.
--   *N* number of compounds under consideration.
+-   \(N_{ij}\) number of compounds that are active on target \(i\) and contain feature \(j\).
+-   \(N_i\) number of compounds that are active on target \(i\).
+-   \(N_j\) number of compounds that contain feature \(j\).
+-   \(N\) number of compounds under consideration.
 
 The maximum likelihood estimates for the Bernoulli experiments give:
 
-$$
-p(i|j) = \\frac{N\_{ij}}{N\_i}
-$$
+\[
+p(i|j) = \frac{N_{ij}}{N_i}
+\]
 
 and
 
-$$
-p(i) = \\frac{N\_{i}}{N}.
-$$
+\[
+p(i) = \frac{N_{i}}{N}.
+\]
 
-We now regularize these estimates by introducing a prior and using the posterior as estimate in a Bayesian framework. Regularization is in particular necessary for *p*(*i*|*j*). For this value we often have only few counts which leads to a high variance of the estimates.
+We now regularize these estimates by introducing a prior and using the posterior as estimate in a Bayesian framework. Regularization is in particular necessary for \(p(i|j)\). For this value we often have only few counts which leads to a high variance of the estimates.
 
-The conjugate prior of the Bernoulli distribution is the beta distribution with *α* and *β* as parameters. The posterior parameters of a beta prior and a Bernoulli likelihood with *N*<sub>*s*</sub> for the success counts and *N* for the total counts are:
+The conjugate prior of the Bernoulli distribution is the beta distribution with \(\alpha\) and \(\beta\) as parameters. The posterior parameters of a beta prior and a Bernoulli likelihood with \(N_s\) for the success counts and \(N\) for the total counts are:
 
-$$
-\\hat{\\alpha} = N\_s + \\alpha
-$$
+\[
+\hat{\alpha} = N_s + \alpha
+\]
 
 and
 
-$$
-\\hat{\\beta} = \\beta + N - N\_s .
-$$
+\[
+\hat{\beta} = \beta + N - N_s .
+\]
 
 The posterior success probability is
 
-$$
-p(x=1) = \\frac{\\hat{\\alpha}}{\\hat{\\alpha}+\\hat{\\beta}}  = \\frac{N\_s + \\alpha}{N+\\alpha+\\beta} .
-$$
+\[
+p(x=1) = \frac{\hat{\alpha}}{\hat{\alpha}+\hat{\beta}}  = \frac{N_s + \alpha}{N+\alpha+\beta} .
+\]
 
 We now apply these posterior to our two estimates, which gives
 
-$$
-p(i|j) = \\frac{N\_{ij}+\\alpha}{N\_{j}+\\alpha+\\beta}
-$$
+\[
+p(i|j) = \frac{N_{ij}+\alpha}{N_{j}+\alpha+\beta}
+\]
 
 and
 
-$$
-p(i) = \\frac{N\_{i}+\\alpha\_{i}}{N+\\alpha\_{i}+\\beta\_{i}}.
-$$
+\[
+p(i) = \frac{N_{i}+\alpha_{i}}{N+\alpha_{i}+\beta_{i}}.
+\]
 
-In the following we set *α*<sub>*i*</sub> = 0 and *β*<sub>*i*</sub> = 0 as *p*(*i*) needs regularization less than *p*(*i*|*j*). The expected value of *p*(*i*|*j*) averaged over all features is
+In the following we set \(\alpha_{i} = 0\) and \(\beta_{i} = 0\) as \(p(i)\) needs regularization less than \(p(i|j)\). The expected value of \(p(i|j)\) averaged over all features is
 
-$$
-\\sum\_{j}p(i)p(i|j) = \\sum\_{j}p(i,j) = p(i) \\approx \\frac{N\_i}{N} .
-$$
+\[
+\sum_{j}p(i)p(i|j) = \sum_{j}p(i,j) = p(i) \approx \frac{N_i}{N} .
+\]
 
 The mean value of a beta distribution is
 
-$$
-\\frac{\\alpha}{\\alpha+\\beta}.
-$$
+\[
+\frac{\alpha}{\alpha+\beta}.
+\]
 
-We do not know how often a target active compound appears in all com- pounds that contain feature *j*. An uninformative guess is that the percentage of target active compounds of compounds having feature *j* is the same as the percentage of target active compound of all compounds. On average this guess is optimal. We set the mean of the prior to the expected value (over all features) of *p*(*i*|*j*):
+We do not know how often a target active compound appears in all com- pounds that contain feature \(j\). An uninformative guess is that the percentage of target active compounds of compounds having feature \(j\) is the same as the percentage of target active compound of all compounds. On average this guess is optimal. We set the mean of the prior to the expected value (over all features) of \(p(i|j)\):
 
-$$
-\\frac{N\_i}{N} = \\frac{\\alpha}{\\alpha+\\beta},
-$$
+\[
+\frac{N_i}{N} = \frac{\alpha}{\alpha+\beta},
+\]
 
 which gives
 
-$$
-\\beta = \\alpha \\left( \\frac{N}{N\_i} - 1 \\right).
-$$
+\[
+\beta = \alpha \left( \frac{N}{N_i} - 1 \right).
+\]
 
 We obtain:
 
-$$
-p(i|j) = \\frac{N\_{ij}+\\alpha}{N\_{j}+\\alpha\\frac{N}{N\_{i}}}.
-$$
+\[
+p(i|j) = \frac{N_{ij}+\alpha}{N_{j}+\alpha\frac{N}{N_{i}}}.
+\]
 
 The odds score is
 
@@ -2485,7 +2512,7 @@ The odds score is
 \frac{p(i|j)}{p(i)} & = & \frac{N_{ij}+\alpha}{\left(N_{j}+\alpha\frac{N}{N_{i}}\right)(N_{i}/N)} \\
  & = & \frac{N_{ij}N + \alpha N}{N_{j} N_{i} + \alpha N} . 
 \end{eqnarray*}
-The scores have to be computed for *x*<sub>*j*</sub> = 1 and for *x*<sub>*j*</sub> = 0. If feature *j* is present in a new compound then the score for *x*<sub>*j*</sub> = 1 have to be used, otherwise the score for *x*<sub>*j*</sub> = 0. The odds scores are:
+The scores have to be computed for \(x_{j} = 1\) and for \(x_{j} = 0\). If feature \(j\) is present in a new compound then the score for \(x_{j} = 1\) have to be used, otherwise the score for \(x_{j} = 0\). The odds scores are:
 
 \begin{eqnarray*}
 \frac{p(i|x_{j}=1)}{p(i)} & = & \frac{N_{ij} N + \alpha N}{N_{j} N_{i} + \alpha N} \\
@@ -2497,11 +2524,11 @@ The log odds scores are
 S(i,x_{j}=1) &=& \log\frac{p(i|x_{j}=1)}{p(i)}\\
 S(i,x_{j}=0) &=& \log\frac{p(i|x_{j}=0)}{p(i)}
 \end{eqnarray*}
-The score for *x*<sub>*j*</sub> = 0 can be very important. A particular feature might be absent in compounds that are active on a target but otherwise often observed. In this case the missing feature is very indicative for active compounds. The final score for *L* features is
+The score for \(x_{j} = 0\) can be very important. A particular feature might be absent in compounds that are active on a target but otherwise often observed. In this case the missing feature is very indicative for active compounds. The final score for \(L\) features is
 
-$$
-S(\\mathbf{x},\\omega\_{i}) = \\sum\_{k=1}^{L}\[x\_{j}S(i,x\_{j}=1)+(1-x\_{j})S(i,x\_{j}=0)\].
-$$
+\[
+S(\mathbf{x},\omega_{i}) = \sum_{k=1}^{L}[x_{j}S(i,x_{j}=1)+(1-x_{j})S(i,x_{j}=0)].
+\]
 
 ### Issues and Simplifications
 
@@ -2517,15 +2544,15 @@ A feature can be removed from the model if the corresponding odds scores are equ
 
 #### Using Only Features Observed in Active Compounds
 
-Here we reduce the computational complexity and know all features based on the active target set. We focus on features that are present in at least one compound that is active on the target, that is, *N*<sub>*i**j*</sub> &gt; 0.
+Here we reduce the computational complexity and know all features based on the active target set. We focus on features that are present in at least one compound that is active on the target, that is, \(N_{ij} > 0\).
 
-For *N*<sub>*i**j*</sub> = 0, we assume that *N*<sub>*j*</sub>*N*<sub>*i*</sub> = 0 which results in
+For \(N_{ij} = 0\), we assume that \(N_{j} N_{i} = 0\) which results in
 
 \begin{eqnarray*}
 \frac{p(i|x_{j}=1)}{p(i)} & = & 1 \\
 \frac{p(i|x_{j}=0)}{p(i)} & = & 1 
 \end{eqnarray*}
-For a log scoring scheme, these values do not contribute and can be skipped. The assumption *N*<sub>*j*</sub>*N*<sub>*i*</sub> = 0 implies that if a feature is not observed in the active compounds, either the feature is too seldom observed or there are too few compounds that are active.
+For a log scoring scheme, these values do not contribute and can be skipped. The assumption \(N_{j} N_{i} = 0\) implies that if a feature is not observed in the active compounds, either the feature is too seldom observed or there are too few compounds that are active.
 
 However, we miss a feature that makes a compound inactive. A feature may not be observed in the actives because this feature leads to inactivity. Furthermore, large compounds with many features are less penalized. Since it has several drawbacks, we do not prefer this approach.
 
@@ -2537,43 +2564,47 @@ Here we reduce the computational complexity and allow to include new features on
 
 We set
 
-$$
-\\frac{p(i|x\_{j}=0)}{p(i)} = 1 .
-$$
+\[
+\frac{p(i|x_{j}=0)}{p(i)} = 1 .
+\]
 
 This corresponds to
 
-*α*<sub>0</sub> → ∞
+\[
+\alpha_{0} \rightarrow \infty 
+\]
 
-for the *α*<sub>0</sub> of the prior.
+for the \(\alpha_{0}\) of the prior.
 
 A feature that was seldom observed in active compounds and is absent in the current compound does not contribute positively. Compounds are in general not considered as being similar to each other because they lack the same features. In contrast, compounds are similar if they share the same features. More relevant, a feature that is very indicative of active compounds but missing in the current compound does not contribute negatively. The missing feature does only affect the score by a missing positive value.
 
 ##### Zero Compound Offset
 
-An approach that is more correct is to compute the offset to the zero compound *x*<sup>0</sup> , that is the compound without features.
+An approach that is more correct is to compute the offset to the zero compound \(x^{0}\) , that is the compound without features.
 
 The score for the zero compound is
 
-$$
-S(x^{0},\\omega\_{i}) = \\sum\_{k=1}^{L}S(i,x\_{j}=0) .
-$$
+\[
+S(x^{0},\omega_{i}) = \sum_{k=1}^{L}S(i,x_{j}=0) .
+\]
 
-The score for another compound **x** differs from the zero compound score *S*(**x**<sup>0</sup>, *ω*<sub>*i*</sub>) by adding for each feature *j* that is present in **x**:
+The score for another compound \(\mathbf{x}\) differs from the zero compound score \(S(\mathbf{x}^{0}, \omega_{i})\) by adding for each feature \(j\) that is present in \(\mathbf{x}\):
 
-*S*(*i*, *x*<sub>*j*</sub> = 1)−*S*(*i*, *x*<sub>*j*</sub> = 0).
+\[
+S(i,x_{j}=1) - S(i,x_{j}=0) .
+\]
 
 The score is
 
-$$
-S(\\mathbf{x},\\omega\_{i}) = S(\\mathbf{x}^{0},\\omega\_{i}) + \\sum\_{k=1}^{L}x\_{j}\[S(i,x\_{j}=1)-S(i,x\_{j}=0)\] .
-$$
+\[
+S(\mathbf{x},\omega_{i}) = S(\mathbf{x}^{0},\omega_{i}) + \sum_{k=1}^{L}x_{j}[S(i,x_{j}=1)-S(i,x_{j}=0)] .
+\]
 
 We can rank scores by
 
-$$
-S = \\sum\_{k=1}^{L}x\_{j}\[S(i,x\_{j}=1)-S(i,x\_{j}=0)\] .
-$$
+\[
+S = \sum_{k=1}^{L}x_{j}[S(i,x_{j}=1)-S(i,x_{j}=0)] .
+\]
 
 For a classification, we assume that the scores on the active compounds follow a normal distribution and the scores on the inactive compounds follow also a normal distribution. Since the scores are not optimized by an algorithm (in contrast to alignment scores), the normal assumption is justified.
 
@@ -2586,7 +2617,7 @@ We can derive a Bayes optimal classifier using the discriminant function:
 &-&\ln\sigma_{1}+\ln\sigma_{0} \\
 &+&\ln p(\omega_{i})-\ln(1-p(\omega_{i})),
 \end{eqnarray*}
-where *μ*<sub>1</sub> and *σ*<sub>1</sub><sup>2</sup> are the mean and variance of the score of active compounds, and *μ*<sub>0</sub> and *σ*<sub>0</sub><sup>2</sup> the mean and variance of the score of inactive compounds.
+where \(\mu_{1}\) and \(\sigma_{1}^{2}\) are the mean and variance of the score of active compounds, and \(\mu_{0}\) and \(\sigma_{0}^{2}\) the mean and variance of the score of inactive compounds.
 
 Kernel Density Estimation
 -------------------------
@@ -2606,39 +2637,36 @@ We want to create a matrix with predicted activity of M compounds on L targets:
   p(\omega_L|x_1) & p(\omega_L|x_2) & \cdots & p(\omega_L|x_M)
  \end{pmatrix}
 \end{equation*}
-According to (Koutsoukas et al. 2013), we can estimate *p*(*ω*<sub>*α*</sub>|**x**<sub>**i**</sub>) in the following way. The class-conditional probability density is assumed to be equal to
+According to (Koutsoukas et al. 2013), we can estimate \(p(\omega_\alpha| \mathbf{x_i})\) in the following way. The class-conditional probability density is assumed to be equal to
 
 \begin{equation*}
  p( \mathbf{x_i}|\omega_\alpha) = \frac{1}{ N_{\omega_{\alpha}} } \sum_{ \mathbf{x_j} \in
  \omega_\alpha} K( \mathbf{x_i}, \mathbf{x_j}; h ),
 \end{equation*}
-with *N*<sub>*ω*<sub>*α*</sub></sub> the number of compounds in the training set that are active on target *α*. *K*(**x**<sub>**i**</sub>, **x**<sub>**j**</sub>; *h*) is a kernel function with window size (bandwidth) *h*, for example a Gaussian kernel:
-$$
-K( \\mathbf{x\_i}, \\mathbf{x\_j}; h ) = \\frac{1}{h \\sqrt{2 \\pi } } 
-\\exp \\left(-\\frac{\\mathrm{d}( \\mathbf{x\_i}, \\mathbf{x\_j})^2}{2 h^2}  \\right).
-$$
- The function *d*(**x**<sub>**i**</sub>, **x**<sub>**j**</sub>)<sup>2</sup> can be any metric that describes the distance between two compounds *i* and *j*, for example the Hamming distance for bit vectors (in the case of chemical fingerprints) or an L1//L2 vector norm if **x**<sub>**i**</sub> and **x**<sub>**j**</sub> contain real numbers.
+with \(N_{\omega_{\alpha}}\) the number of compounds in the training set that are active on target \(\alpha\). \(K( \mathbf{x_i}, \mathbf{x_j}; h )\) is a kernel function with window size (bandwidth) \(h\), for example a Gaussian kernel: \[
+K( \mathbf{x_i}, \mathbf{x_j}; h ) = \frac{1}{h \sqrt{2 \pi } } 
+\exp \left(-\frac{\mathrm{d}( \mathbf{x_i}, \mathbf{x_j})^2}{2 h^2}  \right).
+\] The function \(\mathrm{d}(\mathbf{x_i}, \mathbf{x_j})^2\) can be any metric that describes the distance between two compounds \(i\) and \(j\), for example the Hamming distance for bit vectors (in the case of chemical fingerprints) or an L1//L2 vector norm if \(\mathbf{x_i}\) and \(\mathbf{x_j}\) contain real numbers.
 
-With the above, the probability of interest can be derived using Bayes' theorem:
-$$
- p(\\omega\_\\alpha |  \\mathbf{x\_i})=\\frac{p(\\omega\_\\alpha)  p( \\mathbf{x\_i}|\\omega\_\\alpha)}{p( \\mathbf{x\_i})}
-$$
+With the above, the probability of interest can be derived using Bayes' theorem: \[
+ p(\omega_\alpha |  \mathbf{x_i})=\frac{p(\omega_\alpha)  p( \mathbf{x_i}|\omega_\alpha)}{p( \mathbf{x_i})}
+\]
 
-The remaining question is now, how to calculate the prior probability *p*(*ω*<sub>*α*</sub>) and the probability of the test data *p*(**x**<sub>**i**</sub>). This question can be answered in several ways. The biosigParzenRosenblatt program allows three approaches. These approaches are refered to as normalization types, because the above equation can be rewritten as the sum of the Gaussian-smoothed distances from the compound of interest to all active compounds in the train set for target of interest, divided by a normalization term. In addition to the "None" variant, yielding the un-normalized sum of distances, two other alternative are available, named "PerTarget" and "CrossTarget".
+The remaining question is now, how to calculate the prior probability \(p(\omega_\alpha)\) and the probability of the test data \(p( \mathbf{x_i})\). This question can be answered in several ways. The biosigParzenRosenblatt program allows three approaches. These approaches are refered to as normalization types, because the above equation can be rewritten as the sum of the Gaussian-smoothed distances from the compound of interest to all active compounds in the train set for target of interest, divided by a normalization term. In addition to the "None" variant, yielding the un-normalized sum of distances, two other alternative are available, named "PerTarget" and "CrossTarget".
 
 ### cross-target normalization (active compounds only)
 
-In (Koutsoukas et al. 2013), prior class probability was assumed to be equivalent to the proportion of molecules in that class for the training set: $p(\\omega\_\\alpha)=\\frac{N\_{\\omega\_{\\alpha}}}{N},$ where *N* refers to total number of instances in the training set and $p( \\mathbf{x\_i})=\\sum\_{\\beta=1}^{L} p(\\omega\_\\beta) p( \\mathbf{x\_i} | \\omega\_\\beta)=\\sum\_{\\beta=1}^{L} \\frac{N\_{\\omega\_{\\beta}}}{N} p( \\mathbf{x\_i}|\\omega\_\\beta) .$ The latter follows directly from Bayes' theorem under the assumption that the probability that **x**<sub>**i**</sub> is active summed over all *L* targets is 1: $\\sum\_{\\beta=1}^{L} p(\\omega\_\\beta | \\mathbf{x\_i})=\\sum\_{\\beta=1}^{L} \\frac{p(\\omega\_\\beta) p( \\mathbf{x\_i}|\\omega\_\\beta)}{p( \\mathbf{x\_i})} =1.$
+In (Koutsoukas et al. 2013), prior class probability was assumed to be equivalent to the proportion of molecules in that class for the training set: \(p(\omega_\alpha)=\frac{N_{\omega_{\alpha}}}{N},\) where \(N\) refers to total number of instances in the training set and \(p( \mathbf{x_i})=\sum_{\beta=1}^{L} p(\omega_\beta) p( \mathbf{x_i} | \omega_\beta)=\sum_{\beta=1}^{L} \frac{N_{\omega_{\beta}}}{N} p( \mathbf{x_i}|\omega_\beta) .\) The latter follows directly from Bayes' theorem under the assumption that the probability that \(\mathbf{x_i}\) is active summed over all \(L\) targets is 1: \(\sum_{\beta=1}^{L} p(\omega_\beta | \mathbf{x_i})=\sum_{\beta=1}^{L} \frac{p(\omega_\beta) p( \mathbf{x_i}|\omega_\beta)}{p( \mathbf{x_i})} =1.\)
 
-The above formulations for *p*(*ω*<sub>*α*</sub>) and *p*(**x**<sub>**i**</sub>) are not applicable in our case for the following reasons. Firstly, the *p*(**x**<sub>**i**</sub>) is chosen in such a way that the summed probability over all targets for that compound is 1. This implies that each compound is active on exactly one target, which is in general not the case for our applications. Secondly, above formulations assumes that the same *N* can be used for all targets. This would be the case if the train set is a full matrix (i.e., if all compounds in the train set are measured for all targets of interest). However, this seems to be invalid for the sparse case.
+The above formulations for \(p(\omega_\alpha)\) and \(p(\mathbf{x_i})\) are not applicable in our case for the following reasons. Firstly, the \(p( \mathbf{x_i})\) is chosen in such a way that the summed probability over all targets for that compound is \(1\). This implies that each compound is active on exactly one target, which is in general not the case for our applications. Secondly, above formulations assumes that the same \(N\) can be used for all targets. This would be the case if the train set is a full matrix (i.e., if all compounds in the train set are measured for all targets of interest). However, this seems to be invalid for the sparse case.
 
 The cross-target normalization, normalizes the local kernel density using a reference density that is calculated across targets. However, while doing so, only information about active compounds is included, while discarding all knowledge about inactive compounds.
 
 ### Single target normalization (active and inactive compounds)
 
-Because of the limitations of the cross-target normalization, also another normalization was implemented, that does take into account the inactive data. In this case, we assume that the prior probability is equal to the fraction of all training compounds measured for this particular target that was found to be active: $p(\\omega\_\\alpha)=\\frac{N\_{\\omega\_\\alpha}}{N\_{\\omega\_\\alpha} + N\_{\\neg \\omega\_\\alpha}}.$ Note that this corresponds with the definition above, if *N* is calculated for each target separately (this is different from our current implementation in which *N* is not explicitely calculated as it is assumed to be the same thing in the numerator and denominator and hence divided away). This corresponds to the sparse case in which different compounds may be measured on different targets.
+Because of the limitations of the cross-target normalization, also another normalization was implemented, that does take into account the inactive data. In this case, we assume that the prior probability is equal to the fraction of all training compounds measured for this particular target that was found to be active: \(p(\omega_\alpha)=\frac{N_{\omega_\alpha}}{N_{\omega_\alpha} + N_{\neg \omega_\alpha}}.\) Note that this corresponds with the definition above, if \(N\) is calculated for each target separately (this is different from our current implementation in which \(N\) is not explicitely calculated as it is assumed to be the same thing in the numerator and denominator and hence divided away). This corresponds to the sparse case in which different compounds may be measured on different targets.
 
-Along the same way of reasoning, we also base our estimate for the probability of the data on all available training data for this specific target and thus obtain a different *p*(**x**<sub>**i**</sub>) for each target:
+Along the same way of reasoning, we also base our estimate for the probability of the data on all available training data for this specific target and thus obtain a different \(p(\mathbf{x_i})\) for each target:
 
 \begin{eqnarray*}
 p( \mathbf{x_i}) &=& p(\omega_\alpha) p( \mathbf{x_i}|\omega_\alpha)+ p(\neg \omega_\alpha)
@@ -2673,7 +2701,7 @@ N_{\neg \omega_\alpha}}  \right) \\
  \omega_\alpha} K( \mathbf{x_i}, \mathbf{x_j}; h ) }{
  \sum_{ \mathbf{x_j} \in (\omega_\alpha \cup \neg \omega_\alpha)} K( \mathbf{x_i}, \mathbf{x_j}; h)}.
 \end{eqnarray*}
-In other words, the predicted probability for a compound **x**<sub>**i**</sub> to be active on a target *α* is equal to the sum of the Gaussian-smoothed distances from **x**<sub>**i**</sub> to all active compounds in the train set for target *α*, divided by the of the Gaussian-smoothed distances from **x**<sub>**i**</sub> to all active and inactive train compounds for target *α*.
+In other words, the predicted probability for a compound \(\mathbf{x_i}\) to be active on a target \(\alpha\) is equal to the sum of the Gaussian-smoothed distances from \(\mathbf{x_i}\) to all active compounds in the train set for target \(\alpha\), divided by the of the Gaussian-smoothed distances from \(\mathbf{x_i}\) to all active and inactive train compounds for target \(\alpha\).
 
 For further details and references see also Wikipedia:[Kernel Density Estimation or Parzen-Rosenblatt-Window](https://en.wikipedia.org/wiki/Kernel_density_estimation)
 
@@ -2684,22 +2712,21 @@ Naive-Bayes
 
 Here we derive a Naive Bayes approach for the prediction of compound-target activity. Other than Koutsoukas et al. 2013 and the PhD thesis of Robert Lowe, we want to use both active and inactive data. As the derivation in the aforementioned paper and phd thesis only deals with active data, some of the symbols and probabilities may have a slightly different meaning.
 
-The output we want to create is a matrix with predictions for M compounds and L targets:
-$$
- p(\\mathrm{target}|\\mathrm{compound}) =
- \\begin{pmatrix}
-  p(\\omega\_1|x\_1) & p(\\omega\_1|x\_2) & \\cdots & p(\\omega\_1|x\_M)\\\\
-  p(\\omega\_2|x\_1) & p(\\omega\_2|x\_2) & \\cdots & p(\\omega\_2|x\_M) \\\\
-  \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\
-  p(\\omega\_L|x\_1) & p(\\omega\_L|x\_2) & \\cdots & p(\\omega\_L|x\_M)
- \\end{pmatrix}
-$$
+The output we want to create is a matrix with predictions for M compounds and L targets: \[
+ p(\mathrm{target}|\mathrm{compound}) =
+ \begin{pmatrix}
+  p(\omega_1|x_1) & p(\omega_1|x_2) & \cdots & p(\omega_1|x_M)\\
+  p(\omega_2|x_1) & p(\omega_2|x_2) & \cdots & p(\omega_2|x_M) \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  p(\omega_L|x_1) & p(\omega_L|x_2) & \cdots & p(\omega_L|x_M)
+ \end{pmatrix}
+\]
 
 If the scores in this matrix are all probabilities, it is sufficient to calculate this matrix per row . The way in which we estimate the probabilities based on the per-target data is very similar to that for our alternative Parzen-Rosenblatt approach (with *per-target normalization*).
 
 ### Naive Bayes based on all active and inactive data for a given target
 
-Here we derive a naive Bayes prediction for a query compound with the binary feature vector **x** = (*x*<sub>1</sub>, …, *x*<sub>*j*</sub>) on a target *n*. Using Bayes' theorem we can write:
+Here we derive a naive Bayes prediction for a query compound with the binary feature vector \(\mathbf{x}=(x_1,\ldots,x_j)\) on a target \(n\). Using Bayes' theorem we can write:
 
 \begin{eqnarray*}
  p(\omega_n | \mathbf{x}) 
@@ -2711,12 +2738,12 @@ Here we derive a naive Bayes prediction for a query compound with the binary fea
 %\left( x_i p(x_i=1|\omega_n) + (1-x_i)
 %p(x_i=0|\omega_n)\right)}{p(\mathbf{x})} .
 \end{eqnarray*}
-If we want to use this as a classifier (predict only one target for a given compound), we can combine the predictions for all target (the entire matrix shown above) and use argmax<sub>*ω*<sub>*n*</sub></sub>*p*(*ω* = *ω*<sub>*n*</sub>|**x**). Using the \`naive' assumption of conditional independence we can fill in:
+If we want to use this as a classifier (predict only one target for a given compound), we can combine the predictions for all target (the entire matrix shown above) and use \(\arg\max_{\omega_n} p(\omega=\omega_n | \mathbf{x})\). Using the \`naive' assumption of conditional independence we can fill in:
 
-$$
- p(\\mathbf{x} | \\omega\_n ) = p(x\_1, \\ldots, x\_j | \\omega\_n) = \\prod\_{i=1}^{j}
- \\left( x\_i p(x\_i=1|\\omega\_n) + (1-x\_i) p(x\_i=0|\\omega\_n) \\right).
-$$
+\[
+ p(\mathbf{x} | \omega_n ) = p(x_1, \ldots, x_j | \omega_n) = \prod_{i=1}^{j}
+ \left( x_i p(x_i=1|\omega_n) + (1-x_i) p(x_i=0|\omega_n) \right).
+\]
 
 <!---
 Note, for further reference, that also 
@@ -2740,26 +2767,26 @@ p( \mathbf{x}) &=&
 +
 \frac{N_{\neg \omega_n}}{N} p(\mathbf{x}|\neg \omega_n).
 \end{eqnarray*}
-Recall that the training is performed on the present target *n* only. Therefore, we define the following counts:
+Recall that the training is performed on the present target \(n\) only. Therefore, we define the following counts:
 
--   *N*<sub>*ω*<sub>*n*</sub></sub> is the number of compounds that are active on target *n*
--   *N*<sub>¬*ω*<sub>*n*</sub></sub> is the number of compounds that are inactive on target *n*
--   *N* = *N*<sub>*ω*<sub>*n*</sub></sub> + *N*<sub>¬*ω*<sub>*n*</sub></sub> is the total number of data points available for target *n*
--   *N*<sub>*i*, *ω*<sub>*n*</sub></sub> is the number of compounds that are active on target *n* and contain feature *i*
--   *N*<sub>*i*, ¬*ω*<sub>*n*</sub></sub> is the number of compounds that are inactive on target *n* and contain feature *i*
--   *N*<sub>*i*</sub> = *N*<sub>*i*, *ω*<sub>*n*</sub></sub> + *N*<sub>*i*, ¬*ω*<sub>*n*</sub></sub> is the number of compounds that are measured for target *n* and contain feature *i*
+-   \(N_{\omega_n}\) is the number of compounds that are active on target \(n\)
+-   \(N_{\neg \omega_n}\) is the number of compounds that are inactive on target \(n\)
+-   \(N = N_{\omega_n} + N_{\neg \omega_n}\) is the total number of data points available for target \(n\)
+-   \(N_{i,\omega_n}\) is the number of compounds that are active on target \(n\) and contain feature \(i\)
+-   \(N_{i,\neg \omega_n}\) is the number of compounds that are inactive on target \(n\) and contain feature \(i\)
+-   \(N_{i}=N_{i,\omega_n}+N_{i,\neg \omega_n}\) is the number of compounds that are measured for target \(n\) and contain feature \(i\)
 
-Similarly, also the counts for compounds without feature *i* are defined
+Similarly, also the counts for compounds without feature \(i\) are defined
 
--   *N*<sub>¬*i*, *ω*<sub>*n*</sub></sub> = *N*<sub>*ω*<sub>*n*</sub></sub> − *N*<sub>*i*, *ω*<sub>*n*</sub></sub> is the number of compounds that are active on target *n* and do not contain feature *i*
--   *N*<sub>¬*i*, ¬*ω*<sub>*n*</sub></sub> = *N*<sub>¬*ω*<sub>*n*</sub></sub> − *N*<sub>*i*, ¬*ω*<sub>*n*</sub></sub> is the number of compounds that are inactive on target *n* and do not contain feature *i*
--   *N*<sub>¬*i*</sub> = *N*<sub>¬*i*, *ω*<sub>*n*</sub></sub> + *N*<sub>¬*i*, ¬*ω*<sub>*n*</sub></sub> is the number of compounds that are measured for target *n* and do not contain feature *i*
+-   \(N_{\neg i,\omega_n}=N_{\omega_n}-N_{i,\omega_n}\) is the number of compounds that are active on target \(n\) and do not contain feature \(i\)
+-   \(N_{\neg i,\neg \omega_n}=N_{\neg \omega_n}-N_{i,\neg \omega_n}\) is the number of compounds that are inactive on target \(n\) and do not contain feature \(i\)
+-   \(N_{\neg i}=N_{\neg i,\omega_n}+N_{\neg i,\neg \omega_n}\) is the number of compounds that are measured for target \(n\) and do not contain feature \(i\)
 
-For the probabilities *p*(*x*<sub>*i*</sub>|*ω*<sub>*n*</sub>) and *p*(*ω*<sub>*n*</sub>) we assume a Bernoulli distribution. The maximum likelihood estimate for such a distribution is equal to the sample mean of the available data. Hence,
+For the probabilities \(p(x_i | \omega_n)\) and \(p(\omega_n)\) we assume a Bernoulli distribution. The maximum likelihood estimate for such a distribution is equal to the sample mean of the available data. Hence,
 
-$$
-  p(x\_i = 1 | \\omega\_n) = \\frac{N\_{i,\\omega\_n}}{N\_{\\omega\_n}} , 
-$$
+\[
+  p(x_i = 1 | \omega_n) = \frac{N_{i,\omega_n}}{N_{\omega_n}} , 
+\]
 
 <!---
 $$
@@ -2768,9 +2795,9 @@ $$
 \end{equation}
 $$
 -->
-$$
-   p(x\_i = 1) = \\frac{N\_i}{N},
-$$
+\[
+   p(x_i = 1) = \frac{N_i}{N},
+\]
 
 <!---
 $$
@@ -2779,58 +2806,58 @@ $$
 -->
 and
 
-$$
-  p(\\omega\_n) = \\frac{N\_{\\omega\_n}}{N}.
-$$
+\[
+  p(\omega_n) = \frac{N_{\omega_n}}{N}.
+\]
 
-Due to the limited number of data points, the maximum likelihood estimate may overfit the probabilities *p*(*x*<sub>*i*</sub>|*ω*<sub>*n*</sub>) for some features. To avoid this, we use a smoothing approach using a prior distribution. Because the likelihood is a Bernoulli distribution, we will use its conjugate prior, which is a beta distribution. Given a prior distribution with mean *α*/(*α* + *β*), we obtain a posterior distribution:
+Due to the limited number of data points, the maximum likelihood estimate may overfit the probabilities \(p(x_i | \omega_n)\) for some features. To avoid this, we use a smoothing approach using a prior distribution. Because the likelihood is a Bernoulli distribution, we will use its conjugate prior, which is a beta distribution. Given a prior distribution with mean \(\alpha/(\alpha+\beta)\), we obtain a posterior distribution:
 
-$$
-  p(x\_i = 1 | \\omega\_n) = \\frac{N\_{i,\\omega\_n}+\\alpha}{N\_{\\omega\_n} + \\alpha +
-  \\beta}.
-$$
+\[
+  p(x_i = 1 | \omega_n) = \frac{N_{i,\omega_n}+\alpha}{N_{\omega_n} + \alpha +
+  \beta}.
+\]
 
 <!---
 Using the above equation for $p(\omega_n)$ as a prior, we find 
 -->
-Using the above equation for *p*(*x*<sub>*i*</sub> = 1) as a prior, we find
+Using the above equation for \(p(x_i = 1)\) as a prior, we find
 
-$$
-  \\frac{\\alpha}{\\alpha + \\beta}= \\frac{N\_i}{N}.
-$$
+\[
+  \frac{\alpha}{\alpha + \beta}= \frac{N_i}{N}.
+\]
 
 and thus
 
-$$
-  \\beta = \\alpha \\left(\\frac{N}{N\_i} - 1\\right) .
-$$
+\[
+  \beta = \alpha \left(\frac{N}{N_i} - 1\right) .
+\]
 
-We further choose *α* = 1, which corresponds to adding one pseudo count to *N*<sub>*i*, *ω*<sub>*n*</sub></sub>. This yields
+We further choose \(\alpha=1\), which corresponds to adding one pseudo count to \(N_{i,\omega_n}\). This yields
 
-$$
-  p(x\_i =1 | \\omega\_n) = 
-  \\frac{N\_{i,\\omega\_n}+1}{N\_{\\omega\_n} + \\frac{N}{N\_i}} =
-  \\frac{N\_{i,\\omega\_n} N\_i + N\_i}{N\_{\\omega\_n} N\_i + N}.
-$$
+\[
+  p(x_i =1 | \omega_n) = 
+  \frac{N_{i,\omega_n}+1}{N_{\omega_n} + \frac{N}{N_i}} =
+  \frac{N_{i,\omega_n} N_i + N_i}{N_{\omega_n} N_i + N}.
+\]
 
 With a similar approach, we derive
 
-$$
-  p(x\_i =0 | \\omega\_n) = 
-  \\frac{N\_{\\neg i,\\omega\_n} N\_{\\neg i} + N\_{\\neg i}}{N\_{\\omega\_n} N\_{\\neg i} +
+\[
+  p(x_i =0 | \omega_n) = 
+  \frac{N_{\neg i,\omega_n} N_{\neg i} + N_{\neg i}}{N_{\omega_n} N_{\neg i} +
   N},
-$$
+\]
 
-$$
-  p(x\_i =1 | \\neg \\omega\_n) = 
-   \\frac{N\_{i,\\neg \\omega\_n} N\_i + N\_i}{N\_{\\neg \\omega\_n} N\_i + N},
-$$
+\[
+  p(x_i =1 | \neg \omega_n) = 
+   \frac{N_{i,\neg \omega_n} N_i + N_i}{N_{\neg \omega_n} N_i + N},
+\]
 
-$$
-  p(x\_i =0 | \\neg \\omega\_n) = 
-  \\frac{N\_{\\neg i,\\neg \\omega\_n} N\_{\\neg i} + N\_{\\neg i}}{N\_{\\neg \\omega\_n}
-  N\_{\\neg i} + N}.
-$$
+\[
+  p(x_i =0 | \neg \omega_n) = 
+  \frac{N_{\neg i,\neg \omega_n} N_{\neg i} + N_{\neg i}}{N_{\neg \omega_n}
+  N_{\neg i} + N}.
+\]
 
 <!---
 A similar approach can be used to smooth the expression for $p(x_i)$. We
@@ -2869,27 +2896,27 @@ N_{\neg \omega_n} p(\mathbf{x}|\neg \omega_n)
 \end{eqnarray*}
 with
 
-$$
- p(\\mathbf{x} | \\omega\_n ) =  
- \\prod\_{i=1}^{j} \\left(
-  x\_i \\frac{N\_{i,\\omega\_n} N\_i + N\_i}{N\_{\\omega\_n} N\_i + N}
- + (1-x\_i) \\frac{N\_{\\neg i,\\omega\_n} N\_{\\neg i} + N\_{\\neg i}}{N\_{\\omega\_n} N\_{\\neg i} +
+\[
+ p(\mathbf{x} | \omega_n ) =  
+ \prod_{i=1}^{j} \left(
+  x_i \frac{N_{i,\omega_n} N_i + N_i}{N_{\omega_n} N_i + N}
+ + (1-x_i) \frac{N_{\neg i,\omega_n} N_{\neg i} + N_{\neg i}}{N_{\omega_n} N_{\neg i} +
   N}
-  \\right)
-$$
+  \right)
+\]
 
 and
 
-$$
- p(\\mathbf{x} | \\neg \\omega\_n ) =  
- \\prod\_{i=1}^{j} \\left(
-  x\_i  \\frac{N\_{i,\\neg \\omega\_n} N\_i + N\_i}{N\_{\\neg \\omega\_n} N\_i + N}
- + (1-x\_i) \\frac{N\_{\\neg i,\\neg \\omega\_n} N\_{\\neg i} + N\_{\\neg i}}{N\_{\\neg \\omega\_n}
-  N\_{\\neg i} + N}
-  \\right).
-$$
+\[
+ p(\mathbf{x} | \neg \omega_n ) =  
+ \prod_{i=1}^{j} \left(
+  x_i  \frac{N_{i,\neg \omega_n} N_i + N_i}{N_{\neg \omega_n} N_i + N}
+ + (1-x_i) \frac{N_{\neg i,\neg \omega_n} N_{\neg i} + N_{\neg i}}{N_{\neg \omega_n}
+  N_{\neg i} + N}
+  \right).
+\]
 
-We assume that the train data for target *n* only provides information about the features that are present in some (but not all) of the compounds of the train set. Therefore, we define the feature vector **x** for a new query compound in such a way that it only contains features for which 0 &lt; *N*<sub>*i*</sub> = *N*<sub>*i*, *ω*<sub>*n*</sub></sub> + *N*<sub>*i*, ¬*ω*<sub>*n*</sub></sub> &lt; *N*. As a result, features in the query compound that are absent in the train data are omited from vector **x** and do not influence the posterior probability. Note that this also prevents the occurence of zero terms (features *i* for which *p*(*x*<sub>*i*</sub>|*ω*<sub>*n*</sub>)=0) in the products.
+We assume that the train data for target \(n\) only provides information about the features that are present in some (but not all) of the compounds of the train set. Therefore, we define the feature vector \(\mathbf{x}\) for a new query compound in such a way that it only contains features for which \(0<N_{i}=N_{i,\omega_n}+N_{i,\neg \omega_n}<N\). As a result, features in the query compound that are absent in the train data are omited from vector \(\mathbf{x}\) and do not influence the posterior probability. Note that this also prevents the occurence of zero terms (features \(i\) for which \(p(x_i | \omega_n)=0\)) in the products.
 
 To increase numerical stability, we can rewrite the above as:
 
@@ -3012,44 +3039,44 @@ Logistic-Regression
 
 ### Model
 
-We assume the two classes "Active" and "Inactive". We want to assign that class to a compound **x**, that is more likely. Therefore, if we are given Probability(Class=Active|Compound x) and Probability(Class=Inactive|Compound x), the term $\\frac{\\textrm{Probability(Class=Active|Compound x)}}{\\textrm{Probability(Class=Inactive|compound x)}}$ can be used as a decision criterion, whether we consider a compound as active or inactive. Here the threshold is at 1. If we are in log space, the term is $\\log\\frac{\\textrm{Probability(Class=Active|Compound x)}}{\\textrm{Probability(Class=Inactive|compound x)}}$ and the threshold is at 0.
+We assume the two classes "Active" and "Inactive". We want to assign that class to a compound \(\mathbf{x}\), that is more likely. Therefore, if we are given \(\textrm{Probability(Class=Active|Compound x)}\) and \(\textrm{Probability(Class=Inactive|Compound x)}\), the term \(\frac{\textrm{Probability(Class=Active|Compound x)}}{\textrm{Probability(Class=Inactive|compound x)}}\) can be used as a decision criterion, whether we consider a compound as active or inactive. Here the threshold is at 1. If we are in log space, the term is \(\log\frac{\textrm{Probability(Class=Active|Compound x)}}{\textrm{Probability(Class=Inactive|compound x)}}\) and the threshold is at 0.
 
-On the other side we can use the linear discriminant function ${\\textstyle \\textrm{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}$ with parameters **w** for the feature weights and w<sub>0</sub> for a bias weight to decide whether a compound is active or inactive. If the function gives a positive value, we consider a compound to be active, in the case of a negative value to be inactive.
+On the other side we can use the linear discriminant function \({\textstyle \textrm{w}_{0}}+\mathbf{w}^{T}\mathbf{x}\) with parameters \(\mathbf{w}\) for the feature weights and \(\textrm{w}_{0}\) for a bias weight to decide whether a compound is active or inactive. If the function gives a positive value, we consider a compound to be active, in the case of a negative value to be inactive.
 
 If we combine both sides, we get the core assumption of our logistic regression model:
 
-$\\log\\frac{\\textrm{Probability(Class=Active|Compound x)}}{\\textrm{Probability(Class=Inactive|compound x)}}={{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}$ .
+\(\log\frac{\textrm{Probability(Class=Active|Compound x)}}{\textrm{Probability(Class=Inactive|compound x)}}={{w}_{0}}+\mathbf{w}^{T}\mathbf{x}\) .
 
 Since we assume only two classes, the probabilities sum to 1 and we can write this as
 
-$\\log\\frac{\\textrm{Probability(Class=Active|Compound x)}}{\\textrm{1-Probability(Class=Active|compound x)}}={{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}$.
+\(\log\frac{\textrm{Probability(Class=Active|Compound x)}}{\textrm{1-Probability(Class=Active|compound x)}}={{w}_{0}}+\mathbf{w}^{T}\mathbf{x}\).
 
-Solving this equation for Probability(Class=Active|Compound x) gives
+Solving this equation for \(\textrm{Probability(Class=Active|Compound x)}\) gives
 
-$\\textrm{Probability(Class=Active|Compound x)}=\\frac{e^{{{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}}}{1+e^{{{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}}}$.
+\(\textrm{Probability(Class=Active|Compound x)}=\frac{e^{{{w}_{0}}+\mathbf{w}^{T}\mathbf{x}}}{1+e^{{{w}_{0}}+\mathbf{w}^{T}\mathbf{x}}}\).
 
 ### Regularization and Simplification
 
-In order to get simple models (avoid to overfit the parameters for the special dataset), we assume a Gaussian prior density on the feature weights **w**. From the model selection point of view, a better prior assumption may be a Laplacian density, since the (conditional) maximum a posteriori solution would lead to a sparse vector **w**, however algorithms with Laplacian prior densities tend to need much longer for convergence than algorithms with Gaussian prior densities because of additive updates instead of multiplicative ones.
+In order to get simple models (avoid to overfit the parameters for the special dataset), we assume a Gaussian prior density on the feature weights \(\mathbf{w}\). From the model selection point of view, a better prior assumption may be a Laplacian density, since the (conditional) maximum a posteriori solution would lead to a sparse vector \(\mathbf{w}\), however algorithms with Laplacian prior densities tend to need much longer for convergence than algorithms with Gaussian prior densities because of additive updates instead of multiplicative ones.
 
 In order to "simulate" somehow an algorithm with a Laplacian density, we don't optimize for the negative bias weight. Instead we treat it like a hyperparameter. If we assume imbalanced data as well as features that do not cause negative effects on the score of behaviour, we have two advantages: First the bigger class should be automatically correct. Second, if we initialize the weights with zero, the idea is, that the algorithm learns only positive weights and keeps the negative ones at zero.
 
 ### Model fitting
 
-In logistic regression, usually the conditional likelihood of the data with *N* data points is maximized:
+In logistic regression, usually the conditional likelihood of the data with \(N\) data points is maximized:
 
-$\\prod\_{i=1}^{N}\\textrm{Probability(Class=Class}\_{i} \\textrm{|Compound } \\mathbf{x}\_i \\textrm{)}$
+\(\prod_{i=1}^{N}\textrm{Probability(Class=Class}_{i} \textrm{|Compound } \mathbf{x}_i \textrm{)}\)
 
 This is equivalent to maximizing:
 
-$\\sum\_{i=1}^{N}\\log(\\textrm{Probability(Class=Class}\_{i} \\textrm{|Compound } \\mathbf{x}\_i \\textrm{)})$
+\(\sum_{i=1}^{N}\log(\textrm{Probability(Class=Class}_{i} \textrm{|Compound } \mathbf{x}_i \textrm{)})\)
 
-Using 1 for activite compounds, we get
+Using \(1\) for activite compounds, we get
 \begin{eqnarray*}
 \log{\textstyle \left(\textrm{Probability(Class=1|Compound x)}\right)}\\
  = \textrm{Class}*\log{\textstyle \left(\textrm{Probability(Class=1|Compound x)}\right)}
 \end{eqnarray*}
-Using 0 for inactive compounds, we get
+Using \(0\) for inactive compounds, we get
 
 \begin{eqnarray*}
 \log{\textstyle \left(\textrm{Probability(Class=0|Compound x)}\right)}\\
@@ -3064,7 +3091,7 @@ Since one of the log-terms evaluates to zero for a given compound, we can write 
 \end{eqnarray*}
 Using above probability description
 
-$\\textrm{Probability(Class=1|Compound x)}=\\frac{e^{{{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}}}{1+e^{{{w}\_{0}}+\\mathbf{w}^{T}\\mathbf{x}}}$
+\(\textrm{Probability(Class=1|Compound x)}=\frac{e^{{{w}_{0}}+\mathbf{w}^{T}\mathbf{x}}}{1+e^{{{w}_{0}}+\mathbf{w}^{T}\mathbf{x}}}\)
 
 and
 
@@ -3083,9 +3110,9 @@ If we further include our Gaussian prior assumption on the features and also con
 \begin{eqnarray*}
  & O=- & \sum_{i=1}^{N}\textrm{Class}_{i}*({{w}_{0}}+\mathbf{w}^{T}\mathbf{x}_i)+\log(1+e^{{{w}_{0}}+\mathbf{w}^{T}\mathbf{x}_i})-\frac{1}{2}\alpha\mathbf{w}^{T}\mathbf{w}\\
 \end{eqnarray*}
-Here *α* serves as a weight for the prior assumption.
+Here \(\alpha\) serves as a weight for the prior assumption.
 
-The maximizing parameter for *O* can be obtained by standard numeric optimization procedures, for example gradient descent algorithms. The partial derivative of *O* with respect to the parameters is:
+The maximizing parameter for \(O\) can be obtained by standard numeric optimization procedures, for example gradient descent algorithms. The partial derivative of \(O\) with respect to the parameters is:
 
 \begin{eqnarray*}
  & \frac{\partial O}{\partial w_{j}} & =\sum_{i=1}^{N} {x}_{ij}\textrm{(Probability(Class=1|Compound } \mathbf{x}_{i} \textrm{)}-\textrm{Class}_{i} \textrm{)}-\alpha w_{j}
@@ -3097,7 +3124,7 @@ In order to avoid overfitting, statistical learning theory more or less states, 
 Glossary
 ========
 
--   **Chemo-gen-omics** (Chemogenomics): Wikipedia defines chemogenomics as the systematic screening against drug target families, thus strictly speaking does it often refer rather to *Chemoassaypanel* (dense) or (random) *Chemoassaydata* (very sparse, 2% of a matrix are filled). There is little -omics in this aspect, since the selection of assays is typically heavily biased towards the availability of assay panels (expensive) or availability of assay data. Pre-defined drug targets and assays (hundreds of proteins) does not reflect true [-omics](https://en.wikipedia.org/wiki/Omics), which aims at the collective characterization of probes that translate into the structure, function, and dynamics of an organism (e.g. covering 22k genes, thousands of proteins). And we should add that the aim is to do this systematically measuring dense signatures. There are only a few recent examples in which true *-omics* experiments are utilized by chemical probing (Lamb et al. 2006; Verbist et al. 2015; McArt and Zhang 2011; Khan et al. 2014), such analysis can be called *Chemogenomics*. We have to be clear that while *-omics* measures much more signature features than assay panel signatures is it not unbiased. We are for example restricted by the cell line being used, therefore the gene and proteins being expressed, the timepoint we read-out a biological response, etc. If high-content imaging (HCI) data is getting used then the term *Chemophenomics* applies (Ljosa et al. 2013), also here the amount of signature features is typically magnitudes larger than assay panel signatures. Finally, depending on the type of questions being asked *X* and *Y* signatures are interchangeable or can be fused in multiple ways. The typical approach for drug design is to use any *X* signature available (in-silico or experimental) and then to predict a sparse *Y* assay signature in which the data is often aggregated on protein and gene level for reducing the sparseness.
+-   **Chemo-gen-omics** (Chemogenomics): Wikipedia defines chemogenomics as the systematic screening against drug target families, thus strictly speaking does it often refer rather to *Chemoassaypanel* (dense) or (random) *Chemoassaydata* (very sparse, 2% of a matrix are filled). There is little -omics in this aspect, since the selection of assays is typically heavily biased towards the availability of assay panels (expensive) or availability of assay data. Pre-defined drug targets and assays (hundreds of proteins) does not reflect true [-omics](https://en.wikipedia.org/wiki/Omics), which aims at the collective characterization of probes that translate into the structure, function, and dynamics of an organism (e.g. covering 22k genes, thousands of proteins). And we should add that the aim is to do this systematically measuring dense signatures. There are only a few recent examples in which true *-omics* experiments are utilized by chemical probing (Lamb et al. 2006; Verbist et al. 2015; McArt and Zhang 2011; Khan et al. 2014), such analysis can be called *Chemogenomics*. We have to be clear that while *-omics* measures much more signature features than assay panel signatures is it not unbiased. We are for example restricted by the cell line being used, therefore the gene and proteins being expressed, the timepoint we read-out a biological response, etc. If high-content imaging (HCI) data is getting used then the term *Chemophenomics* applies (Ljosa et al. 2013), also here the amount of signature features is typically magnitudes larger than assay panel signatures. Finally, depending on the type of questions being asked \(X\) and \(Y\) signatures are interchangeable or can be fused in multiple ways. The typical approach for drug design is to use any \(X\) signature available (in-silico or experimental) and then to predict a sparse \(Y\) assay signature in which the data is often aggregated on protein and gene level for reducing the sparseness.
 -   **Data fusion**: "*In research of biology, the amount of data is ever increasing due to the advances in high throughput biotechnologies. These data sets are often representations of a same group of genomic entities projected in various facets. Thus, the idea of incorporating more facets of genomic data in analysis may be beneficial, by reducing the noise, as well as improving statistical significance and leveraging the interactions and correlations between the genomic entities to obtain more refined and higher-level information, which is known as data fusion.*" (Yu, Tranchevent, and Moreau 2011)
 
 Related projects
@@ -3144,6 +3171,8 @@ Related projects
 -->
 **Collaborations**
 
+This work is funded by Janssen Pharmaceutica, and by the Institute for the Promotion of Innovation through Science and Technology in Flanders (IWT): IWT O&O Project ChemBioBridge (IWT 135122) for creating the biosignature data fusion framework and Exascience (IWT 130406) for creating the large-scale and big data versions of the very same framework.
+
 -   [QSTAR](http://www.qstar-consortium.org) (finished)
 -   [EU H2020 Excape](http://excape-h2020.eu/) (ongoing)
 -   Exaptation (ongoing)
@@ -3155,25 +3184,25 @@ Arany, A., J. Simm, P. Zakeri, T. Haber, J. K. Wegner, V. Chupakhin, H. Ceuleman
 
 Arrowsmith, Cheryl H., James E. Audia, Christopher Austin, Jonathan Baell, Jonathan Bennett, Julian Blagg, Chas Bountra, et al. 2015. “The Promise and Peril of Chemical Probes.” *Nat Chem Biol* 11 (8). Structural Genomics Consortium, University of North Carolina at Chapel Hill, Chapel Hill, North Carolina, USA.: 536–41. doi:[10.1038/nchembio.1867](https://doi.org/10.1038/nchembio.1867).
 
-Arrowsmith, John, and Philip Miller. 2013. “Trial Watch: Phase Ii and Phase Iii Attrition Rates 2011-2012.” *Nat Rev Drug Discov* 12 (8): 569. doi:[10.1038/nrd4090](https://doi.org/10.1038/nrd4090).
+Arrowsmith, John, and Philip Miller. 2013. “Trial Watch: Phase II and Phase III Attrition Rates 2011-2012.” *Nat Rev Drug Discov* 12 (8): 569. doi:[10.1038/nrd4090](https://doi.org/10.1038/nrd4090).
 
 Blei, David M., Andrew Y. Ng, and Michael I. Jordan. 2003. “Latent Dirichlet Allocation.” *J. Mach. Learn. Res.* 3 (March). JMLR.org: 993–1022. <http://dl.acm.org/citation.cfm?id=944919.944937>.
 
 Chang, Chih-Chung, and Chih-Jen Lin. 2011. “LIBSVM: A Library for Support Vector Machines.” *ACM Transactions on Intelligent Systems and Technology* 2 (3): 27:1–27:27. doi:[10.1145/1961189.1961199](https://doi.org/10.1145/1961189.1961199).
 
-Cortes Cabrera, Alvaro, Daniel Lucena-Agell, Mariano Redondo-Horcajo, Isabel Barasoain, J Fernando DÃaz, Bernhard Fasching, and Paula M Petrone. 2016. “Aggregated Compound Biological Signatures Facilitate Phenotypic Drug Discovery and Target Elucidation.” *ACS Chem Biol*, August. doi:[10.1021/acschembio.6b00358](https://doi.org/10.1021/acschembio.6b00358).
+Cortes Cabrera, Alvaro, Daniel Lucena-Agell, Mariano Redondo-Horcajo, Isabel Barasoain, J Fernando DÃaz, Bernhard Fasching, and Paula M Petrone. 2016. “Aggregated Compound Biological Signatures Facilitate Phenotypic Drug Discovery and Target Elucidation.” *ACS Chem Biol*, Aug. doi:[10.1021/acschembio.6b00358](https://doi.org/10.1021/acschembio.6b00358).
 
-Harnie, Dries, Alexander Vapirev, Jörg Kurt Wegner, Andrey Gedich, Marvin Steijaert, Roel Wuyts, and Wolfgang De Meuter. 2015. “Scaling Machine Learning for Target Prediction in Drug Discovery Using Apache Spark.” In *Proceedings of the 15th Ieee/Acm International Symposium on Cluster, Cloud and Grid Computing*, 871–79. IEEE. <https://soft.vub.ac.be/~dharnie/private/PID3612761.pdf>.
+Harnie, Dries, Alexander Vapirev, Jörg Kurt Wegner, Andrey Gedich, Marvin Steijaert, Roel Wuyts, and Wolfgang De Meuter. 2015. “Scaling Machine Learning for Target Prediction in Drug Discovery Using Apache Spark.” In *Proceedings of the 15th IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing*, 871–79. IEEE. <https://soft.vub.ac.be/~dharnie/private/PID3612761.pdf>.
 
 Hinselmann, G., L. Rosenbaum, A. Jahn, N. Fechner, and A. Zell. 2011. “JCompoundMapper: An Open Source Java Library and Command-Line Tool for Chemical Fingerprints.” *J Cheminform* 3 (1). University of Tübingen, Center for Bioinformatics Tübingen (ZBIT), Sand 1, 72076 Tübingen, Germany. georg.hinselmann@uni-tuebingen.de.: 3. doi:[10.1186/1758-2946-3-3](https://doi.org/10.1186/1758-2946-3-3).
 
-Jeliazkova, Nina, and Vedrin Jeliazkov. 2011. “AMBIT Restful Web Services: An Implementation of the Opentox Application Programming Interface.” *J Cheminform* 3. Ideaconsult Ltd,, Angel Kanchev Str 4, Sofia 1000, Bulgaria. jeliazkova.nina@gmail.com.: 18. doi:[10.1186/1758-2946-3-18](https://doi.org/10.1186/1758-2946-3-18).
+Jeliazkova, Nina, and Vedrin Jeliazkov. 2011. “AMBIT RESTful Web Services: An Implementation of the OpenTox Application Programming Interface.” *J Cheminform* 3. Ideaconsult Ltd,, Angel Kanchev Str 4, Sofia 1000, Bulgaria. jeliazkova.nina@gmail.com.: 18. doi:[10.1186/1758-2946-3-18](https://doi.org/10.1186/1758-2946-3-18).
 
 Kashima, H., K. Tsuda, and A. Inokuchi. 2003. “Marginalized Kernels Between Labeled Graphs.” In *The 20th International Conference on Machine Learning (ICML2003)*. Washington, DC, USA. <http://www.ics.uci.edu/~welling/teatimetalks/kernelclub04/icml2003.pdf>.
 
 Khan, Suleiman A., Seppo Virtanen, Olli P. Kallioniemi, Krister Wennerberg, Antti Poso, and Samuel Kaski. 2014. “Identification of Structural Features in Chemicals Associated with Cancer Drug Response: A Systematic Data-Driven Analysis.” *Bioinformatics* 30 (17). Department of Information; Computer Science, Helsinki Institute for Information Technology HIIT, Aalto University, 00076 Espoo, Institute for Molecular Medicine Finland FIMM, University of Helsinki, 00014 Helsinki, School of Pharmacy, Faculty of Health Sciences, University of Eastern Finland, 70211 Kuopio; Department of Computer Science, Helsinki Institute for Information Technology HIIT, University Of Helsinki, 00014 Helsinki, Finland Department of Information; Computer Science, Helsinki Institute for Information Technology HIIT, Aalto University, 00076 Espoo, Institute for Molecular Medicine Finland FIMM, University of Helsinki, 00014 Helsinki, School of Pharmacy, Faculty of Health Sciences, University of Eastern Finland, 70211 Kuopio; Department of Computer Science, Helsinki Institute for Information Technology HIIT, University Of Helsinki, 00014 Helsinki, Finland.: i497–i504. doi:[10.1093/bioinformatics/btu456](https://doi.org/10.1093/bioinformatics/btu456).
 
-Klambauer, Günter, Martin Wischenbart, Michael Mahr, Thomas Unterthiner, Andreas Mayr, and Sepp Hochreiter. 2015. “Rchemcpp: A Web Service for Structural Analoging in Chembl, Drugbank and the Connectivity Map.” *Bioinformatics* 31 (20). Institute of Bioinformatics, Johannes Kepler University Linz, Altenbergerstr. 69, 4040 Linz, Austria.: 3392–4. doi:[10.1093/bioinformatics/btv373](https://doi.org/10.1093/bioinformatics/btv373).
+Klambauer, Günter, Martin Wischenbart, Michael Mahr, Thomas Unterthiner, Andreas Mayr, and Sepp Hochreiter. 2015. “Rchemcpp: A Web Service for Structural Analoging in ChEMBL, Drugbank and the Connectivity Map.” *Bioinformatics* 31 (20). Institute of Bioinformatics, Johannes Kepler University Linz, Altenbergerstr. 69, 4040 Linz, Austria.: 3392–4. doi:[10.1093/bioinformatics/btv373](https://doi.org/10.1093/bioinformatics/btv373).
 
 Koutsoukas, A., R. Lowe, Y. K. Motamedi, H. Y. Mussa, W. Klaffke, J. B. O. Mitchell, R. C. Glen, and A. Bender. 2013. “In Silico Target Predictions: Defining a Benchmarking Dataset and Comparison of Performance of the Multiclass Naive Bayes and Parzen-Rosenblatt Window.” *J. Chem. Inf. Model.* 53: 1957–66. doi:[10.1021/ci300435j](https://doi.org/10.1021/ci300435j).
 
@@ -3199,13 +3228,13 @@ O’Boyle, Noel M., Michael Banck, Craig A. James, Chris Morley, Tim Vandermeers
 
 Patlewicz, G., N. Jeliazkova, R. J. Safford, A. P. Worth, and B. Aleksiev. 2008. “An Evaluation of the Implementation of the Cramer Classification Scheme in the Toxtree Software.” *SAR QSAR Environ Res* 19 (5-6). European Commission, DG Joint Research Centre, Institute for Health; Consumer Protection, Ispra, Italy. patlewig@hotmail.com: 495–524. doi:[10.1080/10629360802083871](https://doi.org/10.1080/10629360802083871).
 
-Platt, John C. 1999. “Probabilistic Outputs for Support Vector Machines and Comparisons to Regularized Likelihood Methods.” In *ADVANCES in Large Margin Classifiers*, 61–74. MIT Press. <http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.1639>.
+Platt, John C. 1999. “Probabilistic Outputs for Support Vector Machines and Comparisons to Regularized Likelihood Methods.” In *ADVANCES iN LARGE MARGIN CLASSIFIERS*, 61–74. MIT Press. <http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.1639>.
 
 Ralaivola, Liva, Sanjay J. Swamidass, Hiroto Saigo, and Pierre Baldi. 2005. “Graph Kernels for Chemical Informatics.” *Neural Netw* 18 (8). School of Information; Computer Sciences, University of California, Irvine, CA 92697-3425, USA.: 1093–1110. doi:[10.1016/j.neunet.2005.07.009](https://doi.org/10.1016/j.neunet.2005.07.009).
 
-Ramsundar, Bharath, Steven Kearnes, Patrick Riley, Dale Webster, David Konerding, and Vijay Pande. 2015. “Massively Multitask Networks for Drug Discovery.” In *International Conference on Machine Learning (Icml) 2015*. International Conference on Machine Learning (Icml). <http://arxiv.org/abs/1502.02072>.
+Ramsundar, Bharath, Steven Kearnes, Patrick Riley, Dale Webster, David Konerding, and Vijay Pande. 2015. “Massively Multitask Networks for Drug Discovery.” In *International Conference on Machine Learning (ICML) 2015*. International Conference on Machine Learning (ICML). <http://arxiv.org/abs/1502.02072>.
 
-Salakhutdinov, Ruslan, and Andriy Mnih. 2008. “Bayesian Probabilistic Matrix Factorization Using Markov Chain Monte Carlo.” In *Proceeding Icml ’08 Proceedings of the 25th International Conference on Machine Learning*, 880–87. doi:[10.1145/1390156.1390267](https://doi.org/10.1145/1390156.1390267).
+Salakhutdinov, Ruslan, and Andriy Mnih. 2008. “Bayesian Probabilistic Matrix Factorization Using Markov Chain Monte Carlo.” In *Proceeding ICML ’08 Proceedings of the 25th International Conference on Machine Learning*, 880–87. doi:[10.1145/1390156.1390267](https://doi.org/10.1145/1390156.1390267).
 
 Sastry, G Madhavi, V S Sandeep Inakollu, and Woody Sherman. 2013. “Boosting Virtual Screening Enrichments with Data Fusion: Coalescing Hits from Two-Dimensional Fingerprints, Shape, and Docking.” *J Chem Inf Model* 53 (7). Schrödinger, Sanali Infopark 8-2-120/113, Banjara Hills, Hyderabad 500034, Andhra Pradesh, India.: 1531–42. doi:[10.1021/ci300463g](https://doi.org/10.1021/ci300463g).
 
@@ -3213,15 +3242,15 @@ Simm, J., A. Arany, P. Zakeri, T. Haber, J. K. Wegner, V. Chupakhin, H. Ceuleman
 
 Sitzmann, M., W.–D. Ihlenfeldt, and M. C. Nicklaus. 2010. “Tautomerism in Large Databases.” *J Comput Aided Mol Des* 24 (6-7). Chemical Biology Laboratory, Center for Cancer Research, National Cancer Institute, National Institutes of Health, DHHS, NCI-Frederick, 376 Boyles St., Frederick, MD 21702, USA.: 521–51. doi:[10.1007/s10822-010-9346-4](https://doi.org/10.1007/s10822-010-9346-4).
 
-Unterthiner, T., A. Mayr, G. Klambauer, M. Steijaert, H. Ceulemans, J. K. Wegner, and S. Hochreiter. 2014. “Deep Learning as an Opportunity in Virtual Screening.” In *Workshop on Deep Learning and Representation Learning (Nips2014)*. <https://goo.gl/WXnHGS>.
+Unterthiner, T., A. Mayr, G. Klambauer, M. Steijaert, H. Ceulemans, J. K. Wegner, and S. Hochreiter. 2014. “Deep Learning as an Opportunity in Virtual Screening.” In *Workshop on Deep Learning and Representation Learning (NIPS2014)*. <https://goo.gl/WXnHGS>.
 
-van Westen, G. J. P., A. Hendriks, J. K. Wegner, A. P. IJzerman, H. W. T. van Vlijmen, and A. Bender. 2013. “Significantly Improved Hiv Inhibitor Efficacy Prediction Employing Proteochemometric Models Generated from Antivirogram Data.” *PLoS Comput Biol* 9: e1002899. doi:[10.1371/journal.pcbi.1002899](https://doi.org/10.1371/journal.pcbi.1002899).
+van Westen, G. J. P., A. Hendriks, J. K. Wegner, A. P. IJzerman, H. W. T. van Vlijmen, and A. Bender. 2013. “Significantly Improved HIV Inhibitor Efficacy Prediction Employing Proteochemometric Models Generated from Antivirogram Data.” *PLoS Comput Biol* 9: e1002899. doi:[10.1371/journal.pcbi.1002899](https://doi.org/10.1371/journal.pcbi.1002899).
 
 van Westen, G. J., R. F. Swier, J. K. Wegner, Adriaan P. Ijzerman, H. W. van Vlijmen, and A. Bender. 2013. “Benchmarking of Protein Descriptor Sets in Proteochemometric Modeling (Part 1): Comparative Study of 13 Amino Acid Descriptor Sets.” *J Cheminform* 5 (1): 41. doi:[10.1186/1758-2946-5-41](https://doi.org/10.1186/1758-2946-5-41).
 
 van Westen, Gerard Jp, Remco F. Swier, Isidro Cortes-Ciriano, Jörg K. Wegner, John P. Overington, Adriaan P. Ijzerman, Herman Wt van Vlijmen, and Andreas Bender. 2013. “Benchmarking of Protein Descriptor Sets in Proteochemometric Modeling (Part 2): Modeling Performance of 13 Amino Acid Descriptor Sets.” *J Cheminform* 5 (1): 42. doi:[10.1186/1758-2946-5-42](https://doi.org/10.1186/1758-2946-5-42).
 
-Verbist, Bie, Günter Klambauer, Liesbet Vervoort, Willem Talloen, Q. S. T. A. R Consortium, Ziv Shkedy, Olivier Thas, Andreas Bender, Hinrich W H. Göhlmann, and Sepp Hochreiter. 2015. “Using Transcriptomics to Guide Lead Optimization in Drug Discovery Projects: Lessons Learned from the Qstar Project.” *Drug Discov Today* 20 (5). Institute of Bioinformatics, Johannes Kepler University, Linz, Austria. Electronic address: hochreit@bioinf.jku.at.: 505–13. doi:[10.1016/j.drudis.2014.12.014](https://doi.org/10.1016/j.drudis.2014.12.014).
+Verbist, Bie, Günter Klambauer, Liesbet Vervoort, Willem Talloen, Q. S. T. A. R Consortium, Ziv Shkedy, Olivier Thas, Andreas Bender, Hinrich W H. Göhlmann, and Sepp Hochreiter. 2015. “Using Transcriptomics to Guide Lead Optimization in Drug Discovery Projects: Lessons Learned from the QSTAR Project.” *Drug Discov Today* 20 (5). Institute of Bioinformatics, Johannes Kepler University, Linz, Austria. Electronic address: hochreit@bioinf.jku.at.: 505–13. doi:[10.1016/j.drudis.2014.12.014](https://doi.org/10.1016/j.drudis.2014.12.014).
 
 Wawer, Mathias J., Kejie Li, Sigrun M. Gustafsdottir, Vebjorn Ljosa, Nicole E. Bodycombe, Melissa A. Marton, Katherine L. Sokolnicki, et al. 2014. “Toward Performance-Diverse Small-Molecule Libraries for Cell-Based Phenotypic Screening Using Multiplexed High-Dimensional Profiling.” *Proc Natl Acad Sci U S A* 111 (30). Center for the Science of Therapeutics, stuart\_schreiber@harvard.edu pclemons@broadinstitute.org.: 10911–6. doi:[10.1073/pnas.1410933111](https://doi.org/10.1073/pnas.1410933111).
 

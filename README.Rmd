@@ -58,12 +58,12 @@ bibliography: README.bib
 [![DOI](images/zenodo.61084.png)](http://dx.doi.org/10.5281/zenodo.61084)
 
 # Contributors
-[ChemBioBridge](http://chembiobridge.eu) was investigating the rationalization of experimental and in-silico signatures via 
+[ChemBioBridge](http://chembiobridge.eu) and [ChemBioBridge@Github](https://github.com/bioinf-jku/project_BBDD) (IWT 135122) was investigating the rationalization of experimental and in-silico signatures via 
 supervised learning [@umk+14; @mkuh15] and data fusion [@ytm11; @saz+15; @asz+15].
 
 [![ChemBioBridge](images/chembiobridge.png)](http://chembiobridge.eu) 
 
-[Exascience](https://github.com/ExaScience) was investigating the algorithm scalability and processing via high-performance computing [@hvwgsww15].
+[Exascience](https://github.com/ExaScience) (IWT 130406) was investigating the algorithm scalability and processing via high-performance computing [@hvwgsww15].
 
 [![Exascience](images/exascience.png)](https://github.com/ExaScience)
 
@@ -85,7 +85,7 @@ supervised learning [@umk+14; @mkuh15] and data fusion [@ytm11; @saz+15; @asz+15
                                    Jean-Marc Neefs,
                                    Hinrich Goehlmann,
                                    Jose Felipe Golib Dzib, Hans De Wolf, Pieter Peeters
-* **Openanalytics**:               [Marvin Steijaert](https://github.com/msteijaert), 
+* **Open Analytics NV**:           [Marvin Steijaert](https://github.com/msteijaert), 
                                    [Arunkumar Srinivasan](https://github.com/arunsrinivasan),
                                    Laure Cougnaud,
                                    Kirsten Vanhoorde
@@ -804,6 +804,46 @@ and higher-level information, which is known as data fusion.*" [@ytm11]
     * **bayes like** (University of Linz): Input $\hat y_{i,j,m}$ must be probabilities. Produces probabilities and 
       uses all training data as reference set calculating $\tilde y_{i,j}=1-\prod_{m=1}^{M}\hat y_{i,j,m}/(\prod_{m=1}^{M} \hat y_{i,j,m}+\prod_{m=1}^{M}(1-\hat y_{i,j,m})(\frac{g}{1-g})^{M-1})$, where $g=p(y_{ ij}=1 | j)$ is the relative frequency of active compounds.
 
+## Signature evaluation and fusion - File and directory formats
+
+
+(TODO: expand further)
+
+### Train data
+
+Train data is stored in a directory with tab-separated text files with and extension `.train` (or `.train.gz`).
+The name of the file indicates the target (`EGFR.train`) or target-level (`EGFR_level5.train`) and contains two columns and no header.
+The first column contains the compound identifiers (inchikeys), the second is the activity (0=inactive, 1=active).
+As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section).
+ Train data (in text, Redis or hdf5 format) can be created using the `biosigTargetsGenerator` utility.
+
+### Trained models
+
+Logistic regression and SVM use different executables for the train and predict step. This has the advantage that the (slow) train step only is performed once and the (faster) prediction step can re-use the resulting trained model for each new set of query compounds. 
+Trained models are stored in a directory.
+
+For logistic regressiona, this directory contains the following files:
+
+* settings.json a file with model parameters specified for the train step
+* for each target: <target_name>.LRModel.FilteredFeatures , which contains a list of features (uint32_t)
+* for each target: <target_name>.LRModel, which contains the bias value (double) that is followed by the list of feature weights (double). The number of feature weights in LRModel should equal the number of features in LRModel.FilteredFeatures.
+
+### Predictions query
+
+The prediction query (requested compounds for prediction) is specified by a single text file or a directory of text files. Each of those files has an extension `.pred` (or `.pred.gz`). In the case of a directory with multiple files, the name should match the name of the target (`EGFR.pred`) or target-level (`EGFR_level5.pred`).
+It should contain one with compound identifiers (inchikeys).
+As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section).
+All these formats (text, Redis or hdf5 format) can be created using the various prediction executables or the `biosigPredictionFusion` utility.
+
+
+### Predictions output
+
+Predictions are stored in a directory with tab-separated text files with and extension `.out` (or `.out.gz`). 
+The name of the file indicates the target (`EGFR.out`) or target-level (`EGFR_level5.out`) and contains two columns and no header. 
+The first column contains the compound identifiers (inchikeys), the second is the predicted score or probability.
+As alternatives for the text files, also Redis and HDF5 files formats are available(see also advanced usage section).
+All these formats (text, Redis or hdf5 format) can be created using the various prediction executables or the `biosigPredictionFusion` utility.
+
 
 ## Signature evaluation and fusion - Traditional insilico signature
 
@@ -1494,7 +1534,7 @@ The target generator simplifies the process by preparing a
 * **[bootstrap sampling](https://en.wikipedia.org/wiki/Bootstrapping_(statistics))** as an additional element to reduce a data bias and improve the overall estimations of a variance.
 * **filtering**
     * ensuring a *cluster cross-validation* (CCV) produces valid splits with sufficient actives and inactives by removing all invalid splits, which might e.g. contain no actives at all or compounds without signature data $X$ due to the feature selection.
-* **cluster cross-validation (CCV)**
+* **cluster cross-validation (CCV)** [@mkuh15]
     * *cluster cross-validation* (CCV) (allows using all data, including chemical series); for preventing a chemical series bias in which e.g. compounds from
       the same chemical series might end up in a training and test set, which would render variance estimations useless. A brief example is provided in a
       cluster cross-validation [Excel file](cluster_crossvalidation.xlsx).
@@ -1565,7 +1605,7 @@ The *target generator* provides the following options:
 * **calculateStats**: Enables calculation of various folding stats instead of generating targets. Is based on target generator output
     * **statsOutputPath**: Output path for folding stats results
 
-Example of a stratified sampled cluster cross-validation (CCV) for multi-task (multiple targets) mining.
+Example of a stratified sampled cluster cross-validation (CCV) [@mkuh15] for multi-task (multiple targets) mining.
 The prepared cluster-cross-validation signatures can be downloaded [here](https://goo.gl/8FEs2X).
 
 ```bash
@@ -1853,7 +1893,7 @@ done
 
 ```
 
-The prepared cluster cross-validation data for the Wawer signatures can be downloaded [here](https://goo.gl/8FEs2X).
+The prepared cluster cross-validation [@mkuh15] data for the Wawer signatures can be downloaded [here](https://goo.gl/8FEs2X).
 
 # Advanced options
 
@@ -3498,6 +3538,8 @@ and higher-level information, which is known as data fusion.*" [@ytm11]
 -->
 
 **Collaborations**
+
+This work is funded by Janssen Pharmaceutica, and by the Institute for the Promotion of Innovation through Science and Technology in Flanders (IWT): IWT O&O Project ChemBioBridge (IWT 135122) for creating the biosignature data fusion framework and Exascience (IWT 130406) for creating the large-scale and big data versions of the very same framework.
 
 * [QSTAR](http://www.qstar-consortium.org) (finished)
 * [EU H2020 Excape](http://excape-h2020.eu/) (ongoing)
