@@ -737,6 +737,10 @@ java -jar ambit.jar -a standardize -m post -d page=0 -d pagesize=-1  \
      -d smiles=true -d smilescanonical=false -d inchi=true \
      -d stereo=true -d neutralise=true -d isotopes=true
 
+#alternative call routine
+#curl  -k "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/49797644/record/SDF/?record_type=2d&response_type=save&response_basename=Structure2D_CID_49797644" > pubchem.test.sdf
+#java -jar ambitcli-3.0.2-7385.jar -i pubchem.test.sdf -a standardize -m post -o test.sdf
+
 #create text file with normalized inchikey's and all other properties
 python scripts/python/signature_utils/sdf2txt.py --sdfile chembl20_cmpds_drugs.ambit.sdf --molecule_id inchikey 
 
